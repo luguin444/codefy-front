@@ -8,7 +8,7 @@ import Button from '../Button';
 
 export default function LoginForm (props) {
 
-    const {registered} = props;
+    const {registered, setRegistered} = props;
     const history = useHistory();
     const {setUser} = useContext(UserContext);
     
@@ -38,11 +38,18 @@ export default function LoginForm (props) {
 
     function signUpRoute() {
         const bodyRequest = {name, email, password, confirmPassword};
-        axios.post('route', bodyRequest).then(() => {
+        axios.post('http://localhost:3000/clients/signup', bodyRequest).then(({data}) => {
             setLoading(false);
-            history.push('/home');
+            setRegistered(true);
+            console.log(data);
         }).catch((err) => {
-            console.log(err);
+            if (err.response.data.error === "Senhas diferentes.") {
+                alert('As senhas não são iguais. Tente novamente');
+            } else if (err.response.status === 422) {
+                alert('Dados não estão no padrão. Nome e senha devem conter mais de 6 caracteres');
+            } else {
+                alert('Problema com o cadastro. Erro desconhecido');
+            }
             setLoading(false);
         });
     }

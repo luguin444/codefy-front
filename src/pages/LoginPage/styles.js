@@ -62,6 +62,6 @@ h2 {
   }
     
   }
-`
+`;
 
 export default Container;
