@@ -1,7 +1,6 @@
-import React, {useState} from 'react'
-
-import LoginForm from '../../components/LoginForms'
-import Container from './styles'
+import React, {useState} from 'react';
+import LoginForm from '../../components/LoginForm.js';
+import Container from './styles';
 
 export default function LoginPage () {
 
@@ -13,7 +12,7 @@ export default function LoginPage () {
          <h2> learn. practice. code.</h2>
          <div className = 'loginBox'>
             <LoginForm registered = {registered}/>
-            <p> 
+            <p onClick = { () => setRegistered(!registered)}> 
                { registered ?
                   "Primeira vez ? Crie uma conta!" :
                   "Já tem uma conta ? Faça login" 
