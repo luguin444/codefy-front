@@ -2,7 +2,6 @@ import axios from 'axios';
 import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import UserContext from '../../contexts/UserContext';
-const webpack = require('webpack');
 
 import Form from './styles';
 import Button from '../Button';
