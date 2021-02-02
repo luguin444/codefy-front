@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import UserContext from '../../contexts/UserContext';
+const webpack = require('webpack');
 
 import Form from './styles';
 import Button from '../Button';
@@ -25,7 +26,7 @@ export default function LoginForm (props) {
 
     function signInRoute() {
         const bodyRequest = {email, password};
-        axios.post('http://localhost:3000/login', bodyRequest).then(({data}) => {
+        axios.post(`${process.env.API_BASE_URL}/login`, bodyRequest).then(({data}) => {
             setLoading(false);
             setUser(data);
             localStorage.setItem('token', data.token);
@@ -38,7 +39,7 @@ export default function LoginForm (props) {
 
     function signUpRoute() {
         const bodyRequest = {name, email, password, confirmPassword};
-        axios.post('http://localhost:3000/clients/signup', bodyRequest).then(({data}) => {
+        axios.post(`${process.env.API_BASE_URL}/clients/signup`, bodyRequest).then(({data}) => {
             setLoading(false);
             setRegistered(true);
             console.log(data);
