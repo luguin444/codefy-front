@@ -10,6 +10,7 @@ export default function App() {
           <Router>
               <Switch>
                   <Route path='/' component={LoginPage} exact/>
+                  <Route path='/home' component={LoginPage} exact/>
               </Switch>
           </Router>
       </UserProvider>

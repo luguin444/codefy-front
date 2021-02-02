@@ -12,13 +12,13 @@ export default function LoginPage () {
            <h2> learn. practice. code.</h2>
            <div className='loginBox'>
                <LoginForm registered={registered} setRegistered={setRegistered} />
-               <p onClick = {() => setRegistered(!registered)}> 
+               <button onClick={() => setRegistered(!registered)} className="footer"> 
                    { registered ?
                      "Primeira vez ? Crie uma conta!" :
                      "Já tem uma conta ? Faça login" 
                    }
-               </p>
-               <p>Esqueceu sua senha ?</p>
+               </button>
+               <button className="footer">Esqueceu sua senha ?</button>
            </div>
        </Container>
    );

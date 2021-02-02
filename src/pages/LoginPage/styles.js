@@ -35,13 +35,16 @@ h2 {
   flex-direction: column;
   align-items: center;
 
-  p {
+  .footer {
     font-family: Roboto;
     font-weight: normal;
     font-size: 0.9rem;
     line-height: 25px;
     text-decoration-line: underline;
     color: #787878;
+    outline: 0;
+    border:0;
+    background-color: white;
   }
 
   @media (max-width: 600px) {
