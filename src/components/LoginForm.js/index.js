@@ -7,7 +7,6 @@ import Form from './styles';
 import Button from '../Button';
 
 export default function LoginForm (props) {
-
     const {registered, setRegistered} = props;
     const history = useHistory();
     const {setUser} = useContext(UserContext);

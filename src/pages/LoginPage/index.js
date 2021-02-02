@@ -3,7 +3,6 @@ import LoginForm from '../../components/LoginForm.js';
 import Container from './styles';
 
 export default function LoginPage () {
-
    const [registered, setRegistered] = useState(false);
 
    return (
