@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import LoginForm from '../../components/LoginForm.js';
 import Container from './styles';
 
@@ -13,8 +13,8 @@ export default function LoginPage () {
                 <LoginForm registered={registered} setRegistered={setRegistered} />
                 <button onClick={() => setRegistered(!registered)} className="footer"> 
                     { registered ?
-                        "Primeira vez ? Crie uma conta!" :
-                        "Já tem uma conta ? Faça login" 
+                        'Primeira vez ? Crie uma conta!' :
+                        'Já tem uma conta ? Faça login' 
                     }
                 </button>
                 <button className="footer">Esqueceu sua senha ?</button>

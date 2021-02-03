@@ -26,6 +26,13 @@ module.exports = {
         "react/prop-types": "off",
         "semi": [2, "always"],
         "react/jsx-equals-spacing": [2, "never"],
-        "react/jsx-indent" : ["error", 4]
+        "react/jsx-indent" : ["error", 4],
+        "object-curly-spacing": ["error", "always"],
+        "no-multiple-empty-lines": ["error", { "max": 1 }],
+        "padded-blocks": ["error", "never"],
+        "quotes": ["error", "single"],
+        "keyword-spacing": ["error", { "before": true, "after": true }],
+        "space-in-parens": ["error", "never"],
+        "eol-last": ["error", "always"]
     }
 };
