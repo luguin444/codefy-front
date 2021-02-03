@@ -10,16 +10,16 @@ import Home from './pages/Home';
 
 export default function App() {
   return (
-      <UserProvider>
-          <Router>
-              <Switch>
-                  <Route path='/' component={LoginPage} exact/>
-                  <Router path='/home'>
-                      <Header />
-                      <Home />
-                  </Router>
-              </Switch>
+    <UserProvider>
+      <Router>
+        <Switch>
+          <Route path='/' component={LoginPage} exact/>
+          <Router path='/home'>
+            <Header />
+            <Home />
           </Router>
-      </UserProvider>
+        </Switch>
+      </Router>
+    </UserProvider>
   );
 }
