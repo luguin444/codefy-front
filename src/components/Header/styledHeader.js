@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const styledHeader = styled.nav`
-    width: 100%;
+    width: 100vw;
     padding: 1em 1.5em;
     position: fixed;
     top: 0;
@@ -23,7 +23,6 @@ const styledHeader = styled.nav`
     .logo{
         font-family: 'Zilla Slab Highlight', cursive;
         font-size: 3em;
-        line-height: 4px;
         letter-spacing: 0.05em;
         color: #333333;
     }
@@ -39,6 +38,17 @@ const styledHeader = styled.nav`
         p {
             font-size: 1.5em;
             color: white;
+        }
+    }
+
+    @media (max-width: 800px) {
+        justify-content: center;
+
+        .logo {
+            margin: 0;
+        }
+        .user, .home, .courses, .perfil{
+            display: none;
         }
     }
     

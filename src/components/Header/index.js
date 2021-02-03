@@ -6,9 +6,9 @@ export default function Header(){
         <StyledHeader>
             <ul className="container">
                 <li className="logo">codify</li>
-                <li>Home</li>
-                <li>Cursos</li>
-                <li>Perfil</li>
+                <li className="home">Home</li>
+                <li className="courses">Cursos</li>
+                <li className="perfil">Perfil</li>
             </ul>
             <div className="user">
                 <p>US</p>
