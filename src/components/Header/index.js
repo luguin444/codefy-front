@@ -14,5 +14,5 @@ export default function Header(){
                 <p>US</p>
             </div>
         </StyledHeader>
-    )
+    );
 }

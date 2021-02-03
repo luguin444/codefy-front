@@ -10,5 +10,5 @@ export default function CoursePreview({ course }){
                 <p>{course.description}</p>
             </div>
         </StyledCoursePreview>
-    )
+    );
 }

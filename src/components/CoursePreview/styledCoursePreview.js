@@ -8,6 +8,7 @@ const StyledCoursePreview = styled.li`
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.15);
     border-radius: 20px;
     margin: 0 0 2em 0;
+    font-family: 'Roboto', sans-serif;
     img{
         width: 100%;
         border-radius: 20px 20px 0 0;

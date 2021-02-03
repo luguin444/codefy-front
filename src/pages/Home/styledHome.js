@@ -3,6 +3,7 @@ import styled from 'styled-components';
 const styledHome = styled.div`
     width: 100%;
     margin: 100px 0 0 0;
+    font-family: 'Roboto', sans-serif;
 
     .banner{
         background: #46A7D4;

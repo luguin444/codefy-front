@@ -1,39 +1,25 @@
-import React, {useState} from 'react';
-import { createGlobalStyle } from "styled-components";
+import React from 'react';
+import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import { UserProvider } from "./contexts/UserContext";
 
 import Header from './components/Header';
+import LoginPage from "./pages/LoginPage";
 import Home from './pages/Home';
-//import { BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
 
 
-export default function App () {
-    return(
-        <>
-            <GlobalStyle />
-            <Header />
-            <Home />
-        </>
-    )
+
+export default function App() {
+  return (
+      <UserProvider>
+          <Router>
+              <Switch>
+                  <Route path='/' component={LoginPage} exact/>
+                  <Router path='/home'>
+                      <Header />
+                      <Home />
+                  </Router>
+              </Switch>
+          </Router>
+      </UserProvider>
+  );
 }
-
-const GlobalStyle = createGlobalStyle`
-
-  * {
-    box-sizing: border-box;
-  }
-
-  body {
-    width: 100vw;
-    min-height: 100vh;
-    font-family: 'Roboto', sans-serif;
-    background: #E5E5E5;
-  }
-
-  button, input, textarea, select {
-    outline: none;
-    border: none;
-    background: none;
-    color: inherit;
-    padding: 0px;
-  }
-`;

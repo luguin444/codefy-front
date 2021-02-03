@@ -3,7 +3,9 @@ import SuggestedCourses from '../../components/SuggestedCourses';
 import StyledHome from './styledHome';
 
 export default function Home(){
+    // eslint-disable-next-line no-unused-vars
     const [activeCourses, setActiveCourser] = useState([]);
+    // eslint-disable-next-line no-unused-vars
     const [suggestedCourses, setSuggestedCourses] = useState([{
         id: 1,
         name: "JavaScript do zero!",
@@ -34,5 +36,5 @@ export default function Home(){
             </div>
             <SuggestedCourses courses={suggestedCourses} />
         </StyledHome>
-    )
+    );
 }

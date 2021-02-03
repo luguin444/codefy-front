@@ -6,9 +6,9 @@ export default function SuggestedCourses({courses}){
         <section className="container">
             <ul>
                 {
-                    courses.map(c => <CoursePreview course={c} />)
+                    courses.map(c => <CoursePreview key={c.id} course={c} />)
                 }
             </ul>
         </section>
-    )
+    );
 }
