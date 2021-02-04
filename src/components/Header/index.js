@@ -1,7 +1,14 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 import StyledHeader from './styledHeader';
 
 export default function Header(){
+    const currentRoute = useLocation();
+
+    if(currentRoute.pathname === '/') {
+        return <></>
+    }
+
     return(
         <StyledHeader>
             <ul className="container">
@@ -11,7 +18,7 @@ export default function Header(){
                 <li className="perfil">Perfil</li>
             </ul>
             <div className="user">
-                <p>US</p>
+                <p>BR</p>
             </div>
         </StyledHeader>
     );

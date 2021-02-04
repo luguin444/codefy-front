@@ -11,6 +11,8 @@ const styledHeader = styled.nav`
     display: flex;
     justify-content: space-between;
     font-family: 'Roboto', sans-serif;
+    z-index: 2;
+
     .container{
         display: flex;
         align-items: center;
@@ -20,6 +22,7 @@ const styledHeader = styled.nav`
         font-size: 1.2em;
         margin: 0 1em 0 0;
     }
+
     .logo{
         font-family: 'Zilla Slab Highlight', cursive;
         font-size: 3em;
@@ -35,6 +38,7 @@ const styledHeader = styled.nav`
         display: flex;
         justify-content: center;
         align-items: center;
+
         p {
             font-size: 1.5em;
             color: white;
@@ -47,6 +51,7 @@ const styledHeader = styled.nav`
         .logo {
             margin: 0;
         }
+        
         .user, .home, .courses, .perfil{
             display: none;
         }
