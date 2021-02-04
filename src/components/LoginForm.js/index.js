@@ -78,7 +78,7 @@ export default function LoginForm (props) {
                 value={password}
                 onChange={ (e) => setPassword(e.target.value)}
                 required
-           />
+            />
             {registered ? '' : 
             <input
                 placeholder="repetir senha"

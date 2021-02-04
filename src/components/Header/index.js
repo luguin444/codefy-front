@@ -18,7 +18,7 @@ export default function Header(){
                 <li className="perfil">Perfil</li>
             </ul>
             <div className="user">
-                <p>BR</p>
+                <p>US</p>
             </div>
         </StyledHeader>
     );
