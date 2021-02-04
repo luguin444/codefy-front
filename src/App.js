@@ -1,12 +1,10 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
-import { UserProvider } from "./contexts/UserContext";
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { UserProvider } from './contexts/UserContext';
 
 import Header from './components/Header';
-import LoginPage from "./pages/LoginPage";
+import LoginPage from './pages/LoginPage';
 import Home from './pages/Home';
-
-
 
 export default function App() {
   return (

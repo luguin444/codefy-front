@@ -1,5 +1,5 @@
 import React from 'react';
-import StyledCoursePreview from './styledCoursePreview';
+import StyledCoursePreview from './styles';
 
 export default function CoursePreview({ course }){
     return (

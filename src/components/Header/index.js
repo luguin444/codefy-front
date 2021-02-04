@@ -1,8 +1,8 @@
 import React from 'react';
-import StyledHeader from './styledHeader';
+import StyledHeader from './styles';
 
 export default function Header(){
-    return(
+    return (
       <StyledHeader>
         <ul className="container">
           <li className="logo">codify</li>
