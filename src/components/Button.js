@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const Button = styled.button`
     width: 100%;
     height: 3rem;
-    background: ${ (props) => (props.disabled ? "#a6d9f1" : "#46A7D4") };
+    background: ${ (props) => (props.disabled ? '#a6d9f1' : '#46A7D4') };
     border-radius: 0.5rem;
     outline: 0;
     border: 0;
