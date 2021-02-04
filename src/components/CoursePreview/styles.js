@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const StyledCoursePreview = styled.li`
     width: 20%;
     min-width: 190px;
-    max-width: 240px;
+    max-width: 200px;
     background: #FFFFFF;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.15);
     border-radius: 20px;
@@ -11,6 +11,7 @@ const StyledCoursePreview = styled.li`
     font-family: 'Roboto', sans-serif;
     img{
         width: 100%;
+        height: 112px;
         border-radius: 20px 20px 0 0;
     }
 

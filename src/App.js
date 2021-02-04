@@ -5,19 +5,22 @@ import { UserProvider } from './contexts/UserContext';
 import Header from './components/Header';
 import LoginPage from './pages/LoginPage';
 import Home from './pages/Home';
+import Course from './pages/Course';
 
 export default function App() {
-  return (
-    <UserProvider>
+    return (
+    
       <Router>
-        <Switch>
-          <Route path='/' component={LoginPage} exact/>
-          <Router path='/home'>
-            <Header />
-            <Home />
-          </Router>
-        </Switch>
-      </Router>
-    </UserProvider>
-  );
+        <UserProvider>
+          <Switch>
+            <Route path='/' component={LoginPage} exact/>
+            <Route exact path='/home'>
+              <Header />
+              <Home />
+            </Route>
+            <Route path='/curso/:id' component={Course} exact/>
+          </Switch>
+        </UserProvider>
+      </Router> 
+    );
 }
