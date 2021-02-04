@@ -25,7 +25,7 @@ export default function LoginForm (props) {
 
     function signInRoute() {
         const bodyRequest = { email, password };
-        axios.post(`${process.env.API_BASE_URL}/login`, bodyRequest).then(({ data }) => {
+        axios.post(`${process.env.API_BASE_URL}/clients/signin`, bodyRequest).then(({ data }) => {
             setLoading(false);
             setUser(data);
             localStorage.setItem('token', data.token);
