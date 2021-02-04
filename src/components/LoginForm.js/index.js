@@ -29,6 +29,7 @@ export default function LoginForm (props) {
             setLoading(false);
             setUser(data);
             localStorage.setItem('token', data.token);
+            localStorage.setItem('name', data.name);
             history.push('/home');
         }).catch((err) => {
             console.log(err);
