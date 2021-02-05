@@ -1,18 +1,26 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { UserProvider } from './contexts/UserContext';
+
+import Header from './components/Header';
 import LoginPage from './pages/LoginPage';
+import Home from './pages/Home';
+import Course from './pages/Course';
 
 export default function App() {
-  return (
-      <UserProvider>
-          <Router>
-              <Switch>
-                  <Route path='/' component={LoginPage} exact/>
-                  <Route path='/home' component={LoginPage} exact/>
-              </Switch>
-          </Router>
-      </UserProvider>
-  );
+    return (
+    
+      <Router>
+        <UserProvider>
+          <Switch>
+            <Route path='/' component={LoginPage} exact/>
+            <Route exact path='/home'>
+              <Header />
+              <Home />
+            </Route>
+            <Route path='/curso/:id' component={Course} exact/>
+          </Switch>
+        </UserProvider>
+      </Router> 
+    );
 }

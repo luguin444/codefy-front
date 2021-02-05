@@ -26,7 +26,7 @@ module.exports = {
         "react/prop-types": "off",
         "semi": [2, "always"],
         "react/jsx-equals-spacing": [2, "never"],
-        "react/jsx-indent" : ["error", 4],
+        "react/jsx-indent" : ["error", 2],
         "object-curly-spacing": ["error", "always"],
         "no-multiple-empty-lines": ["error", { "max": 1 }],
         "padded-blocks": ["error", "never"],
