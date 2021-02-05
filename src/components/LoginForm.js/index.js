@@ -7,9 +7,9 @@ import Form from './styles';
 import Button from '../Button';
 
 export default function LoginForm (props) {
-    const {registered, setRegistered} = props;
+    const { registered, setRegistered } = props;
     const history = useHistory();
-    const {setUser} = useContext(UserContext);
+    const { setUser } = useContext(UserContext);
     
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -24,11 +24,12 @@ export default function LoginForm (props) {
     }
 
     function signInRoute() {
-        const bodyRequest = {email, password};
-        axios.post(`${process.env.API_BASE_URL}/login`, bodyRequest).then(({data}) => {
+        const bodyRequest = { email, password };
+        axios.post(`${process.env.API_BASE_URL}/clients/signin`, bodyRequest).then(({ data }) => {
             setLoading(false);
             setUser(data);
             localStorage.setItem('token', data.token);
+            localStorage.setItem('name', data.name);
             history.push('/home');
         }).catch((err) => {
             console.log(err);
@@ -37,13 +38,13 @@ export default function LoginForm (props) {
     }
 
     function signUpRoute() {
-        const bodyRequest = {name, email, password, confirmPassword};
-        axios.post(`${process.env.API_BASE_URL}/clients/signup`, bodyRequest).then(({data}) => {
+        const bodyRequest = { name, email, password, confirmPassword };
+        axios.post(`${process.env.API_BASE_URL}/clients/signup`, bodyRequest).then(({ data }) => {
             setLoading(false);
             setRegistered(true);
             console.log(data);
         }).catch((err) => {
-            if (err.response.data.error === "Senhas diferentes.") {
+            if (err.response.data.error === 'Senhas diferentes.') {
                 alert('As senhas não são iguais. Tente novamente');
             } else if (err.response.status === 422) {
                 alert('Dados não estão no padrão. Nome e senha devem conter mais de 6 caracteres');
@@ -89,7 +90,7 @@ export default function LoginForm (props) {
             />
             }
             <Button disabled={loading}>
-                {registered ? "Entrar" : "Cadastrar"}
+                {registered ? 'Entrar' : 'Cadastrar'}
             </Button>
         </Form>
     );

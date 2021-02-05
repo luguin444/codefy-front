@@ -1,2 +1,6 @@
 webpack.config.js
+<<<<<<< HEAD
 node_modules
+=======
+.eslintrc.js
+>>>>>>> main
