@@ -14,16 +14,6 @@ export default function Course() {
     const { courses } = useContext(CourseContext);
     const { id } = useParams();
     const [loading, setLoading] = useState(false);
-    // const [course, setCourse] = useState({});
-
-    // useEffect(() => {
-    //     axios.get(`http://localhost:3000/courses/${id}`)
-    //     .then(resp => {
-    //         setCourse(resp.data);
-    //     });
-    // },[]);
-
-
 
     return(
         <OutterContainer>
