@@ -1,12 +1,11 @@
 import axios from 'axios';
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import UserContext from '../../contexts/UserContext';
 import CoursePreview from '../CoursePreview';
 
 export default function SuggestedCourses(){
     const [suggestedCourses, setSuggestedCourses] = useState([]);
-    const { token } = useContext(UserContext);
+    const token = localStorage.getItem('token');
     const history = useHistory();
 
     useEffect(() => {
