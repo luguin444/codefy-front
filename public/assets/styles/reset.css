@@ -54,3 +54,8 @@ table {
 b {
 	font-weight: bold;
 }
+
+a{
+	text-decoration: none;
+	color: inherit;
+}
