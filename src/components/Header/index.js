@@ -5,11 +5,11 @@ import StyledHeader from './styledHeader';
 export default function Header(){
     const currentRoute = useLocation();
 
-    if(currentRoute.pathname === '/') {
-        return <></>
+    if (currentRoute.pathname === '/') {
+        return <></>;
     }
 
-    return(
+    return (
         <StyledHeader>
             <ul className="container">
                 <li className="logo">codify</li>

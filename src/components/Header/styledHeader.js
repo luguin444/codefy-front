@@ -11,26 +11,26 @@ const styledHeader = styled.nav`
     display: flex;
     justify-content: space-between;
     font-family: 'Roboto', sans-serif;
-    z-index: 2;
+    z-index: 5;
 
-    .container{
+    .container {
         display: flex;
         align-items: center;
     }
 
-    li{
+    li {
         font-size: 1.2em;
         margin: 0 1em 0 0;
     }
 
-    .logo{
+    .logo {
         font-family: 'Zilla Slab Highlight', cursive;
         font-size: 3em;
         letter-spacing: 0.05em;
         color: #333333;
     }
 
-    .user{
+    .user {
         background: #46A7D4;
         width: 4em;
         height: 4em;

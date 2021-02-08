@@ -1,13 +1,18 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { useHistory, useParams } from "react-router-dom";
-import OutterContainer from "./OutterContainer";
-import BackgroundBanner from "./BackgroundBanner";
-import MainContainer from "./MainContainer";
-import Presentation from "./Presentarion";
-import CourseStatus from "./CourseStatus";
-import Progress from "./Progress";
-import CourseButton from "./CourseButton";
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { useHistory, useParams } from 'react-router-dom';
+import { 
+    OutterContainer,
+    BackgroundBanner,
+    MainContainer,
+    Presentation,
+    CourseStatus,
+    Progress,
+    CourseButton,
+    Accordeon,
+    TopicsContainer
+} from './styles';
+import Topic from '../../components/Topic';
 
 export default function Course() {
     const { courseId } = useParams();
@@ -30,7 +35,7 @@ export default function Course() {
         setLoading(false);
     }
 
-    return(
+    return (
         <OutterContainer>
             <BackgroundBanner />
             <MainContainer>
@@ -53,10 +58,20 @@ export default function Course() {
                         </div>
                     </Progress>
                     <CourseButton disabled={loading} onClick={startCourse}>
-                        <p>Iniciar curso {`>>`}</p>
+                        <p>Iniciar curso {'>>'}</p>
                     </CourseButton>
                 </CourseStatus>
+                <Accordeon>
+                    <h2>Ementa</h2>
+                    <TopicsContainer>
+                        <Topic text="Apresentação" content="2 aulas • 5 exercicios" />
+                        <Topic text="Preparando o ambiente" content="2 aulas • 5 exercicios" />
+                        <Topic text="Introdução a JS" content="2 aulas • 5 exercicios"/>
+                        <Topic text="Váriaveis" content="2 aulas • 5 exercicios"/>
+                        <Topic text="Condicionais" content="2 aulas • 5 exercicios"/>
+                    </TopicsContainer>
+                </Accordeon>
             </MainContainer>
         </OutterContainer>  
-    )
+    );
 }
