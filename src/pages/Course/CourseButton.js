@@ -10,6 +10,7 @@ const CourseButton = styled.button`
     font-weight: bold;
     font-size: 0.9rem;
     color: #FFFFFF;
+    cursor: pointer;
 `;
 
 export default CourseButton;

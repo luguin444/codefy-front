@@ -1,7 +1,6 @@
 import axios from "axios";
-import React, { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import CourseContext from "../../contexts/CourseContext";
+import React, { useEffect, useState } from "react";
+import { useHistory, useParams } from "react-router-dom";
 import OutterContainer from "./OutterContainer";
 import BackgroundBanner from "./BackgroundBanner";
 import MainContainer from "./MainContainer";
@@ -11,17 +10,33 @@ import Progress from "./Progress";
 import CourseButton from "./CourseButton";
 
 export default function Course() {
-    const { courses } = useContext(CourseContext);
-    const { id } = useParams();
+    const { courseId } = useParams();
     const [loading, setLoading] = useState(false);
+    const [course, setCourse] = useState({});
+    const history = useHistory();
+
+    useEffect(() => {
+        axios.get(`http://localhost:3000/clients/courses/${courseId}`)
+        .then(resp => {
+            setCourse(resp.data);
+        });
+    },[]);
+    
+    function startCourse() {
+        if (loading) return;
+
+        setLoading(true);
+        history.push('/course/:courseId/chapter/:chapterId/topic/:topicId/activity/:activityId');
+        setLoading(false);
+    }
 
     return(
         <OutterContainer>
             <BackgroundBanner />
             <MainContainer>
                 <Presentation>
-                    <h1>{courses.map(c => c.id === parseInt(id) ? c.name : '')}</h1>
-                    <p>{courses.map(c => c.id === parseInt(id) ? c.description : '')}</p>
+                    <h1>{course.name}</h1>
+                    <p>{course.description}</p>
                 </Presentation>
                 <CourseStatus>
                     <Progress>
@@ -37,7 +52,7 @@ export default function Course() {
                             </div>
                         </div>
                     </Progress>
-                    <CourseButton disabled={loading}>
+                    <CourseButton disabled={loading} onClick={startCourse}>
                         <p>Iniciar curso {`>>`}</p>
                     </CourseButton>
                 </CourseStatus>
