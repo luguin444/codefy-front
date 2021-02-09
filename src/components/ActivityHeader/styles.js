@@ -2,7 +2,9 @@ import styled from 'styled-components';
 
 const StyledActivityHeader = styled.nav`
     width: 100vw;
-    position: relative;
+    position: fixed;
+    top: 0;
+    left: 0;
     background: #292929;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
     padding: 1em;

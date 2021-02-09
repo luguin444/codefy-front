@@ -5,7 +5,7 @@ const StyledActivityProgress = styled.section`
     color: #fff;
     display: flex;
     justify-content: center;
-    padding: 2em 0;
+    padding: 5.813em 0 2em 0;
     border-bottom: 1px solid #717171;
 
     .progress-container{

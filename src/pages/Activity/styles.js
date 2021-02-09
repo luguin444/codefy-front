@@ -5,9 +5,12 @@ const StyledActivity = styled.div`
     min-height: 100vh;
     background: #3D3D3D;
     font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     .next-container{
         width: 60vw;
-        margin: 1em auto 0 auto;
+        margin: 1em 0 0 0;
         display: flex;
         justify-content: space-between;
         align-items: center;
