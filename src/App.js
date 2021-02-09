@@ -6,7 +6,7 @@ import Header from './components/Header';
 import LoginPage from './pages/LoginPage';
 import Home from './pages/Home';
 import Course from './pages/Course';
-import Activitie from './pages/Activitie';
+import Activity from './pages/Activity';
 
 export default function App() {
     return (
@@ -24,7 +24,7 @@ export default function App() {
               <Course />
             </Route>
             <Route path='/activitie' exact>
-              <Activitie />
+              <Activity />
             </Route>
           </Switch>
         </UserProvider>

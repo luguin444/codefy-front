@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const StyledActivitieContent = styled.section`
+const StyledActivityContent = styled.section`
     width: 100vw;
     display: flex;
     justify-content: center;
@@ -11,4 +11,4 @@ const StyledActivitieContent = styled.section`
     }
 `;
 
-export default StyledActivitieContent;
+export default StyledActivityContent;

@@ -1,11 +1,10 @@
 import styled from 'styled-components';
 
-const StyledActivitieHeader = styled.nav`
+const StyledActivityHeader = styled.nav`
     width: 100vw;
     position: relative;
     background: #292929;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
-    font-family: 'Roboto', sans-serif;
     padding: 1em;
     .back{
         display: flex;
@@ -17,7 +16,7 @@ const StyledActivitieHeader = styled.nav`
         top: 10px;
         left: 20px;
         background: rgba(255, 255, 255, 0.4);
-        border-radius: 10px;
+        border-radius: 6px;
         cursor: pointer;
         svg{
             font-size: 1.2em;
@@ -36,7 +35,7 @@ const StyledActivitieHeader = styled.nav`
         line-height: 29px;
 
         svg{
-            margin: 0 0.8em 0;
+            margin: 0 0 0 0.4em;
             cursor: pointer;
             font-size: 1.325em;
         }
@@ -44,4 +43,4 @@ const StyledActivitieHeader = styled.nav`
 
 `;
 
-export default StyledActivitieHeader;
+export default StyledActivityHeader;

@@ -1,0 +1,46 @@
+import styled from 'styled-components';
+
+const StyledActivity = styled.div`
+    width: 100vw;
+    min-height: 100vh;
+    background: #3D3D3D;
+    font-family: 'Roboto', sans-serif;
+    .next-container{
+        width: 60vw;
+        margin: 1em auto 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .checkbox-container{
+            display: flex;
+            color: #9D9D9D;
+            justify-content: center;
+            align-items: center;
+            .checkbox{
+                width: 1em;
+                height: 1em;
+                border: 1px solid #9D9D9D;
+                border-radius: 2px;
+                cursor: pointer;
+            }
+            p{
+                margin: 0 0 0 0.5em;
+            }
+        }
+
+        button{
+            outline: none;
+            border:none;
+            width: 18%;
+            background: #46A7D4;
+            border-radius: 0.5em;
+            padding: 0.5em;
+            color: #fff;
+            font-weight: bold;
+            font-size: 0.9em;
+            cursor: pointer;
+        }
+    }
+`;
+
+export default StyledActivity;

@@ -1,15 +1,15 @@
 import React from 'react';
-import StyledActivitieContent from './styles';
+import StyledActivityContent from './styles';
 
-export default function ActivitieContent(){
+export default function ActivityContent(){
     return (
-      <StyledActivitieContent>
+      <StyledActivityContent>
         <iframe  
         src="https://www.youtube.com/embed/Ptbk2af68e8" 
         frameBorder="0" 
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen 
         title="theory">
         </iframe>
-      </StyledActivitieContent>
+      </StyledActivityContent>
     );
 }

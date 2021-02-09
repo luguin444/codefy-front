@@ -1,11 +1,11 @@
 import React from 'react';
 import { IoIosArrowBack } from 'react-icons/io';
 import { IoIosArrowDown } from 'react-icons/io';
-import StyledActivitieHeader from './styles';
+import StyledActivityHeader from './styles';
 
-export default function ActivitieHeader(){
+export default function ActivityHeader(){
     return (
-      <StyledActivitieHeader>
+      <StyledActivityHeader>
         <div className="back">
           <IoIosArrowBack />
         </div>
@@ -13,6 +13,6 @@ export default function ActivitieHeader(){
           <p>Apresentação - Como usar</p>
           <IoIosArrowDown />
         </div>
-      </StyledActivitieHeader>
+      </StyledActivityHeader>
     );
 }

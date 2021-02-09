@@ -1,9 +1,8 @@
 import styled from 'styled-components';
 
-const StyledActivitieProgress = styled.section`
-    width: 100%;
+const StyledActivityProgress = styled.section`
+    width: 100vw;
     color: #fff;
-    font-family: 'Roboto', sans-serif;
     display: flex;
     justify-content: center;
     padding: 2em 0;
@@ -36,4 +35,4 @@ const StyledActivitieProgress = styled.section`
     }
 `;
 
-export default StyledActivitieProgress;
+export default StyledActivityProgress;
