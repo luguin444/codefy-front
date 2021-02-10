@@ -25,10 +25,11 @@ export default function LoginForm (props) {
 
     function signInRoute() {
         const bodyRequest = { email, password };
-        axios.post(`${process.env.API_BASE_URL}/login`, bodyRequest).then(({ data }) => {
+        axios.post(`${process.env.API_BASE_URL}/clients/signin`, bodyRequest).then(({ data }) => {
             setLoading(false);
             setUser(data);
             localStorage.setItem('token', data.token);
+            localStorage.setItem('name', data.name);
             history.push('/home');
         }).catch((err) => {
             console.log(err);
@@ -55,42 +56,40 @@ export default function LoginForm (props) {
     }
 
     return (
-        <Form onSubmit={sendDataToServer}>
-            {registered ? '' : 
-            <input
-                placeholder="nome completo"
-                type="text"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                required
+      <Form onSubmit={sendDataToServer}>
+        {registered ? '' : 
+        <input 
+            placeholder="nome completo"
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+        />}
+        <input
+            placeholder="e-mail"
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
             />
-            }
-            <input
-                placeholder="e-mail"
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-            />
-            <input
-                placeholder="senha"
-                type="password"
-                value={password}
-                onChange={ (e) => setPassword(e.target.value)}
-                required
-           />
-            {registered ? '' : 
-            <input
-                placeholder="repetir senha"
-                type="password"
-                value={confirmPassword}
-                onChange={ (e) => setConfirmPassword(e.target.value)}
-                required
-            />
-            }
-            <Button disabled={loading}>
-                {registered ? 'Entrar' : 'Cadastrar'}
-            </Button>
-        </Form>
+        <input
+            placeholder="senha"
+            type="password"
+            value={password}
+            onChange={ (e) => setPassword(e.target.value)}
+            required
+        />
+        {registered ? '' : 
+        <input
+            placeholder="repetir senha"
+            type="password"
+            value={confirmPassword}
+            onChange={ (e) => setConfirmPassword(e.target.value)}
+            required
+        />}
+        <Button disabled={loading}>
+          {registered ? 'Entrar' : 'Cadastrar'}
+        </Button>
+      </Form>
     );
 }

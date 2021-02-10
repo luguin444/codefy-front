@@ -47,10 +47,15 @@ table {
 	border-spacing: 0;
 }
 
-strong { 
+* {
+    box-sizing: border-box;
+}
+
+b {
 	font-weight: bold;
 }
 
-* {
-	box-sizing: border-box;
+a{
+	text-decoration: none;
+	color: inherit;
 }
