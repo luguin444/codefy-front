@@ -4,13 +4,13 @@ import Topic from './Topic';
 
 export default function Accordeon () {
     return (
-        <Container>
-            <Topic text="Apresentação" content="2 aulas - 5 exercicios" />
-            <Topic text="Preparando o ambiente" content="2 aulas - 5 exercicios" />
-            <Topic text="Introdução a JS" content="2 aulas - 5 exercicios"/>
-            <Topic text="Váriaveis" content="2 aulas - 5 exercicios"/>
-            <Topic text="Condicionais" content="2 aulas - 5 exercicios"/>
-        </Container>
+      <Container>
+        <Topic text="Apresentação" content="2 aulas - 5 exercicios" />
+        <Topic text="Preparando o ambiente" content="2 aulas - 5 exercicios" />
+        <Topic text="Introdução a JS" content="2 aulas - 5 exercicios"/>
+        <Topic text="Váriaveis" content="2 aulas - 5 exercicios"/>
+        <Topic text="Condicionais" content="2 aulas - 5 exercicios"/>
+      </Container>
     );
 }
 
