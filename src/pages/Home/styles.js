@@ -12,6 +12,10 @@ const styledHome = styled.div`
         padding: 1em 1.5em;
     }
 
+    .name{
+        text-transform: capitalize;
+    }
+
     .container{
         width: 90%;
         margin: 0 auto;
