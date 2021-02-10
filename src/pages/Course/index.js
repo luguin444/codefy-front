@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { 
     OutterContainer,
@@ -13,12 +13,16 @@ import {
     TopicsContainer
 } from './styles';
 import Topic from '../../components/Topic';
+import UserContext from '../../contexts/UserContext';
 
 export default function Course() {
     const { courseId } = useParams();
     const [loading, setLoading] = useState(false);
     const [course, setCourse] = useState({});
     const history = useHistory();
+    const { user } = useContext(UserContext);
+
+    console.log(user);
 
     useEffect(() => {
         axios.get(`http://localhost:3000/clients/courses/${courseId}`)

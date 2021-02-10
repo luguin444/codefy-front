@@ -1,38 +1,19 @@
 import React from 'react';
-<<<<<<< HEAD
 import { useLocation } from 'react-router-dom';
-import StyledHeader from './styledHeader';
-
-export default function Header(){
-    const currentRoute = useLocation();
-
-    if (currentRoute.pathname === '/') {
-        return <></>;
-    }
-
-    return (
-        <StyledHeader>
-            <ul className="container">
-                <li className="logo">codify</li>
-                <li className="home">Home</li>
-                <li className="courses">Cursos</li>
-                <li className="perfil">Perfil</li>
-            </ul>
-            <div className="user">
-                <p>US</p>
-            </div>
-        </StyledHeader>
-    );
-=======
 import { Link } from 'react-router-dom';
 import StyledHeader from './styles';
 
 export default function Header(){
+  const currentRoute = useLocation();
   const name = localStorage.getItem('name');
+
+  if (currentRoute.pathname === '/') {
+    return null;
+  }
+
   return (
     <StyledHeader>
       <ul className="container">
-            
         <li className="logo">
           <Link to='/home'>
             codify
@@ -51,5 +32,4 @@ export default function Header(){
       </div>
     </StyledHeader>
   );
->>>>>>> main
 }

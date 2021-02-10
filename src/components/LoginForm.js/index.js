@@ -72,36 +72,6 @@ export default function LoginForm (props) {
             onChange={(e) => setEmail(e.target.value)}
             required
             />
-<<<<<<< HEAD
-            }
-            <input
-                placeholder="e-mail"
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-            />
-            <input
-                placeholder="senha"
-                type="password"
-                value={password}
-                onChange={ (e) => setPassword(e.target.value)}
-                required
-            />
-            {registered ? '' : 
-            <input
-                placeholder="repetir senha"
-                type="password"
-                value={confirmPassword}
-                onChange={ (e) => setConfirmPassword(e.target.value)}
-                required
-            />
-            }
-            <Button disabled={loading}>
-                {registered ? 'Entrar' : 'Cadastrar'}
-            </Button>
-        </Form>
-=======
         <input
             placeholder="senha"
             type="password"
@@ -121,6 +91,5 @@ export default function LoginForm (props) {
           {registered ? 'Entrar' : 'Cadastrar'}
         </Button>
       </Form>
->>>>>>> main
     );
 }
