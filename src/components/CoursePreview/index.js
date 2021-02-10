@@ -10,8 +10,8 @@ export default function CoursePreview({ course }){
         </Link>
         <Link to={`course/${course.id}`}>
           <div className="infos-container">
-            <p><b>{course.name}</b></p>
-            <p>{course.description}</p>
+            <p className="courseName"><b>{course.name}</b></p>
+            <p className="description">{course.description}</p>
           </div>
         </Link>
       </StyledCoursePreview>

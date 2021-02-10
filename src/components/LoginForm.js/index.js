@@ -56,14 +56,15 @@ export default function LoginForm (props) {
 
     return (
       <Form onSubmit={sendDataToServer}>
-        {registered ? '' : 
+        {!registered &&
         <input 
             placeholder="nome completo"
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-        />}
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
+        />
+        }
         <input
             placeholder="e-mail"
             type="email"
@@ -78,7 +79,7 @@ export default function LoginForm (props) {
             onChange={ (e) => setPassword(e.target.value)}
             required
         />
-        {registered ? '' : 
+        {!registered && 
         <input
             placeholder="repetir senha"
             type="password"

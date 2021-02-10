@@ -1,6 +1,7 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import Avatar from 'react-avatar';
 import StyledHeader from './styles';
 
 export default function Header(){
@@ -27,9 +28,7 @@ export default function Header(){
         <li className="courses">Cursos</li>
         <li className="perfil">Perfil</li>
       </ul>
-      <div className="user">
-        <p>{name[0]}</p>
-      </div>
+      <Avatar name={name} round={true} size="4em" maxInitials={2} />
     </StyledHeader>
   );
 }

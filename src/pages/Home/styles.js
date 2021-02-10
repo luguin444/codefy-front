@@ -7,9 +7,13 @@ const styledHome = styled.div`
 
     .banner{
         background: #46A7D4;
-        font-size: 1.2em;
+        font-size: 1.25em;
         color: #FFFFFF;
         padding: 1em 1.5em;
+    }
+
+    .name{
+        text-transform: capitalize;
     }
 
     .container{
@@ -20,7 +24,7 @@ const styledHome = styled.div`
             margin: 3em 0 0 0;
             display: flex;
             flex-wrap: wrap;
-            justify-content: space-evenly;
+            justify-content: space-between;
         }
     }
 
