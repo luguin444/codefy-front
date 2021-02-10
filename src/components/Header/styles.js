@@ -27,27 +27,13 @@ const styledHeader = styled.nav`
         color: #333333;
     }
 
-    .user{
-        background: #46A7D4;
-        width: 4em;
-        height: 4em;
-        border-radius: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        p {
-            font-size: 1.5em;
-            color: white;
-        }
-    }
-
     @media (max-width: 800px) {
         justify-content: center;
 
         .logo {
             margin: 0;
         }
-        .user, .home, .courses, .perfil{
+        .home, .courses, .perfil{
             display: none;
         }
     }
