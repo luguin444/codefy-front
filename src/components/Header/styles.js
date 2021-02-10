@@ -21,6 +21,7 @@ const styledHeader = styled.nav`
     li {
         font-size: 1.2em;
         margin: 0 1em 0 0;
+        cursor: pointer;
     }
 
     .logo {
@@ -38,6 +39,7 @@ const styledHeader = styled.nav`
         display: flex;
         justify-content: center;
         align-items: center;
+        cursor: pointer;
 
         p {
             font-size: 1.5em;

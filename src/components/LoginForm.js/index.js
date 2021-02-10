@@ -42,7 +42,6 @@ export default function LoginForm (props) {
         axios.post(`${process.env.API_BASE_URL}/clients/signup`, bodyRequest).then(({ data }) => {
             setLoading(false);
             setRegistered(true);
-            console.log(data);
         }).catch((err) => {
             if (err.response.data.error === 'Senhas diferentes.') {
                 alert('As senhas não são iguais. Tente novamente');

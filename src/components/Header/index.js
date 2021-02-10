@@ -7,7 +7,7 @@ export default function Header(){
   const currentRoute = useLocation();
   const name = localStorage.getItem('name');
 
-  if (currentRoute.pathname === '/') {
+  if (currentRoute.pathname === '/' || currentRoute.pathname === '/activities') {
     return null;
   }
 

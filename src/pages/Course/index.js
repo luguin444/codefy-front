@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { 
     OutterContainer,
@@ -13,19 +13,16 @@ import {
     TopicsContainer
 } from './styles';
 import Topic from '../../components/Topic';
-import UserContext from '../../contexts/UserContext';
 
 export default function Course() {
     const { courseId } = useParams();
     const [loading, setLoading] = useState(false);
     const [course, setCourse] = useState({});
     const history = useHistory();
-    const { user } = useContext(UserContext);
-
-    console.log(user);
+    const name = localStorage.getItem('name');
 
     useEffect(() => {
-        axios.get(`http://localhost:3000/clients/courses/${courseId}`)
+        axios.get(`${process.env.API_BASE_URL}/clients/courses/${courseId}`)
         .then(resp => {
             setCourse(resp.data);
         });
@@ -50,7 +47,7 @@ export default function Course() {
                 <CourseStatus>
                     <Progress>
                         <div className="avatar">
-                            <p>US</p>
+                            <p>{name[0]}</p>
                         </div>
                         <div className="progress">
                             <p>Você não iniciou esse curso ainda</p>

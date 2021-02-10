@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const styledHome = styled.div`
     width: 100%;
-    margin: 100px 0 0 0;
+    margin-top: 96px;
     font-family: 'Roboto', sans-serif;
 
     .banner{
@@ -25,7 +25,7 @@ const styledHome = styled.div`
     }
 
     @media (max-width: 800px) {
-        margin: 85px 0 0 0;
+        margin-top: 80px;
     }
 `;
 
