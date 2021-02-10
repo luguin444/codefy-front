@@ -39,7 +39,7 @@ export default function LoginForm (props) {
 
     function signUpRoute() {
         const bodyRequest = { name, email, password, confirmPassword };
-        axios.post(`${process.env.API_BASE_URL}/clients/signup`, bodyRequest).then(({ data }) => {
+        axios.post(`${process.env.API_BASE_URL}/clients/signup`, bodyRequest).then(() => {
             setLoading(false);
             setRegistered(true);
         }).catch((err) => {

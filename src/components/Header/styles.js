@@ -31,13 +31,17 @@ const styledHeader = styled.nav`
         color: #333333;
     }
 
+    .user {
+        cursor: pointer;
+    }
+
     @media (max-width: 800px) {
         justify-content: center;
 
         .logo {
             margin: 0;
         }
-        .home, .courses, .perfil{
+        .home, .courses, .perfil, .user{
             display: none;
         }
     }

@@ -28,7 +28,9 @@ export default function Header(){
         <li className="courses">Cursos</li>
         <li className="perfil">Perfil</li>
       </ul>
-      <Avatar name={name} round={true} size="4em" maxInitials={2} />
+      <div className='user'>
+        <Avatar name={name} round={true} size="4em" maxInitials={2}/>
+      </div>
     </StyledHeader>
   );
 }

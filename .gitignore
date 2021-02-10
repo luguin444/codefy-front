@@ -1,9 +1,6 @@
 node_modules
 public/bundle.js
-<<<<<<< HEAD
 
 .yarn
 .yarnrc
-=======
 .env
->>>>>>> main

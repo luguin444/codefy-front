@@ -9,15 +9,15 @@ import Course from './pages/Course';
 
 export default function App() {
     return (
-        <UserProvider>
-            <Router>
-                <Header />
-                <Switch>
-                    <Route path='/' component={LoginPage} exact/>
-                    <Route path='/home' component={Home} exact />
-                    <Route path='/course/:courseId' component={Course} exact/>
-                </Switch>
-            </Router>
-        </UserProvider>
+      <UserProvider>
+        <Router>
+          <Header />
+          <Switch>
+            <Route path='/' component={LoginPage} exact/>
+            <Route path='/home' component={Home} exact />
+            <Route path='/course/:courseId' component={Course} exact/>
+          </Switch>
+        </Router>
+      </UserProvider>
     );
 }

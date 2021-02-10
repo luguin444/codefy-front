@@ -8,24 +8,24 @@ export default function Topic (props) {
     const { text , content } = props;
 
     return (
-        <>
-            <StyledTopic onClick={() => setIsOpen(!isOpen)}>
-                <div className='title'>
-                    {isOpen ? <IoIosArrowUp className='icon'/> : <IoIosArrowDown className='icon'/>}
-                    <p>{text}</p>
-                </div>
-                <div className='content'>
-                    <p>{content}</p>
-                </div>
-            </StyledTopic>
-            <Details isOpen={isOpen}>
-                <li>teste</li>
-                <li>teste</li>
-                <li>teste</li>
-                <li>teste</li>
-                <li>teste</li>
-            </Details>
-        </>
+      <>
+        <StyledTopic onClick={() => setIsOpen(!isOpen)}>
+          <div className='title'>
+            {isOpen ? <IoIosArrowUp className='icon'/> : <IoIosArrowDown className='icon'/>}
+            <p>{text}</p>
+          </div>
+          <div className='content'>
+            <p>{content}</p>
+          </div>
+        </StyledTopic>
+        <Details isOpen={isOpen}>
+          <li>teste</li>
+          <li>teste</li>
+          <li>teste</li>
+          <li>teste</li>
+          <li>teste</li>
+        </Details>
+      </>
     );
 }
 

@@ -1,11 +1,4 @@
 webpack.config.js
-<<<<<<< HEAD
-<<<<<<< HEAD
-node_modules
-=======
-.eslintrc.js
->>>>>>> main
-=======
 node_modules
 .eslintrc.js
->>>>>>> main
+server.js
