@@ -11,9 +11,9 @@ import {
     Progress,
     CourseButton,
     Accordeon,
-    TopicsContainer
+    ChaptersContainer
 } from './styles';
-import Topic from '../../components/Topic';
+import Chapter from '../../components/Chapter';
 
 export default function Course() {
     const { courseId } = useParams();
@@ -25,10 +25,10 @@ export default function Course() {
     useEffect(() => {
         axios.get(`${process.env.API_BASE_URL}/clients/courses/${courseId}`)
         .then(resp => {
-            setCourse(resp.data);
+          setCourse(resp.data);
         });
     },[]);
-    
+    console.log(course);
     function startCourse() {
         if (loading) return;
 
@@ -63,13 +63,12 @@ export default function Course() {
           </CourseStatus>
           <Accordeon>
             <h2>Ementa</h2>
-            <TopicsContainer>
-              <Topic text="Apresentação" content="2 aulas • 5 exercicios" />
-              <Topic text="Preparando o ambiente" content="2 aulas • 5 exercicios" />
-              <Topic text="Introdução a JS" content="2 aulas • 5 exercicios"/>
-              <Topic text="Váriaveis" content="2 aulas • 5 exercicios"/>
-              <Topic text="Condicionais" content="2 aulas • 5 exercicios"/>
-            </TopicsContainer>
+            <ChaptersContainer>
+              {
+                course.chapters && 
+                course.chapters.map(c => <Chapter text={c.name} content="x aulas  •  y exercícios" topics={c.topics} key={c.id} />)
+              }
+            </ChaptersContainer>
           </Accordeon>
         </MainContainer>
       </OutterContainer>  
