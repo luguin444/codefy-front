@@ -1,7 +1,9 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import Avatar from 'react-avatar';
+import { IoIosArrowBack } from 'react-icons/io';
 import { 
     OutterContainer,
     BackgroundBanner,
@@ -23,24 +25,27 @@ export default function Course() {
     const name = localStorage.getItem('name');
 
     useEffect(() => {
-        axios.get(`${process.env.API_BASE_URL}/clients/courses/${courseId}`)
-        .then(resp => {
-          setCourse(resp.data);
-        });
+      axios.get(`${process.env.API_BASE_URL}/clients/courses/${courseId}`)
+      .then(resp => {
+        setCourse(resp.data);
+      });
     },[]);
-    console.log(course);
-    function startCourse() {
-        if (loading) return;
 
-        setLoading(true);
-        history.push('/course/:courseId/chapter/:chapterId/topic/:topicId/activity/:activityId');
-        setLoading(false);
+    function startCourse() {
+      if (loading) return;
+
+      setLoading(true);
+      history.push('/course/:courseId/chapter/:chapterId/topic/:topicId/activity/:activityId');
+      setLoading(false);
     }
 
     return (
       <OutterContainer>
         <BackgroundBanner />
         <MainContainer>
+          <div className="back" onClick={() => history.push('/home')} onKeyPress={() => history.push('/home')}> 
+            <IoIosArrowBack />
+          </div>
           <Presentation>
             <h1>{course.name}</h1>
             <p>{course.description}</p>
