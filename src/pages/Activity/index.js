@@ -87,7 +87,7 @@ export default function Activity(){
     return (
       <StyledActivity>
         <ActivityHeader chapter={chapters[chapter].name} topic={chapters[chapter].topics[topic].name} />
-        <ActivityProgress />
+        <ActivityProgress activities={chapters[chapter].topics[topic].activities} />
         <ActivityContent activity={chapters[chapter].topics[topic].activities[activity]} />
         <form className="next-container">
           <div className="checkbox-container">
