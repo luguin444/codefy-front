@@ -18,11 +18,12 @@ import {
 import Chapter from '../../components/Chapter';
 
 export default function Course() {
-    const { courseId } = useParams();
-    const [loading, setLoading] = useState(false);
-    const [course, setCourse] = useState({});
-    const history = useHistory();
-    const name = localStorage.getItem('name');
+  const { courseId } = useParams();
+  const [loading, setLoading] = useState(false);
+  const [course, setCourse] = useState({});
+  const history = useHistory();
+  const name = localStorage.getItem('name');
+  const token = localStorage.getItem('token');
 
     useEffect(() => {
       axios.get(`${process.env.API_BASE_URL}/clients/courses/${courseId}`)
@@ -33,10 +34,16 @@ export default function Course() {
 
     function startCourse() {
       if (loading) return;
-
+  
       setLoading(true);
-      history.push('/course/:courseId/chapter/:chapterId/topic/:topicId/activity/:activityId');
-      setLoading(false);
+      axios.post(`${process.env.API_BASE_URL}/clients/courses/${courseId}`, { headers: { 'X-Access-Token': token } })
+      .then(() => {
+        history.push('/activities');
+      })
+      .catch(err => {
+        console.log(err);
+        setLoading(false);
+      });
     }
 
     return (
