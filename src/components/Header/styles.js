@@ -11,20 +11,28 @@ const styledHeader = styled.nav`
     display: flex;
     justify-content: space-between;
     font-family: 'Roboto', sans-serif;
-    .container{
+    z-index: 5;
+
+    .container {
         display: flex;
         align-items: center;
     }
 
-    li{
+    li {
         font-size: 1.2em;
         margin: 0 1em 0 0;
+        cursor: pointer;
     }
-    .logo{
+
+    .logo {
         font-family: 'Zilla Slab Highlight', cursive;
         font-size: 3em;
         letter-spacing: 0.05em;
         color: #333333;
+    }
+
+    .user {
+        cursor: pointer;
     }
 
     @media (max-width: 800px) {
@@ -33,7 +41,7 @@ const styledHeader = styled.nav`
         .logo {
             margin: 0;
         }
-        .home, .courses, .perfil{
+        .home, .courses, .perfil, .user{
             display: none;
         }
     }
