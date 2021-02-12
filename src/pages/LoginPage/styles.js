@@ -45,6 +45,7 @@ const Container = styled.div`
       outline: 0;
       border:0;
       background-color: white;
+      cursor: pointer;
     }
 
     @media (max-width: 600px) {
