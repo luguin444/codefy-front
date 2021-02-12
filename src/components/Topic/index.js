@@ -15,7 +15,11 @@ export default function Topic (props) {
             <p>{text}</p>
           </div>
           <div className='content'>
+<<<<<<< HEAD
             <p>{content}</p>
+=======
+            <p> {content} </p>
+>>>>>>> origin/login/signup
           </div>
         </StyledTopic>
         <Details isOpen={isOpen}>
