@@ -2,7 +2,9 @@
   "scripts": {
     "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npx webpack --mode production"
+    "build": "npx webpack --mode production",
+    "deploy": "git push heroku main",
+    "dev": "yarn webpack serve"
   },
   "dependencies": {
     "@babel/core": "^7.12.10",

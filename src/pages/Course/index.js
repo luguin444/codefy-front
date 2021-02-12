@@ -36,7 +36,7 @@ export default function Course() {
       if (loading) return;
   
       setLoading(true);
-      axios.post(`${process.env.API_BASE_URL}/clients/courses/${courseId}`, { headers: { 'X-Access-Token': token } })
+      axios.post(`${process.env.API_BASE_URL}/clients/courses/${courseId}`, {}, { headers: { 'X-Access-Token': token } })
       .then(() => {
         history.push('/activities');
       })
