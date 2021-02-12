@@ -12,7 +12,7 @@ export default function ActivityContent({ activity }){
          title="theory">
           </iframe>
           :
-          ''
+          <h1>Exercício em breve</h1>
         }
        
       </StyledActivityContent>

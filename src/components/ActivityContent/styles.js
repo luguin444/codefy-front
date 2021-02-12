@@ -9,6 +9,10 @@ const StyledActivityContent = styled.section`
         width: 60vw;
         height: 35vw;
     }
+
+    h1{
+        color: #fff;
+    }
 `;
 
 export default StyledActivityContent;

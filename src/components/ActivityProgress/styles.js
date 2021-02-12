@@ -26,11 +26,19 @@ const StyledActivityProgress = styled.section`
             }
         }
 
+        .grey{
+            color: #B3B3B3;
+        }
+
+        .now{
+            color: #fff;
+        }
+
         .bar{
             width: 6vw;
             height: 2px;
             margin: 5.5px 0 0 0;
-            background: white;
+            background:  #B3B3B3;
         }
     }
 `;
