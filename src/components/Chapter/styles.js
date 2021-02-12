@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const StyledTopic =  styled.article`
+const StyledChapter =  styled.article`
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -45,12 +45,36 @@ const StyledTopic =  styled.article`
 `;
 
 const Details = styled.ul`
-    display: ${(props) => props.isOpen ? 'initial' : 'none'};
-    list-style: circle;
-    padding: 1rem;
+    display: ${(props) => props.isOpen ? 'block' : 'none'}; 
+    padding: 2em;
+    color: #656565;
+    background: #F8F8F8;
+    
+    .topic-container{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0 0 1.5em 0;
 
+        p{
+            cursor: pointer;
+        }
+    }
+
+    .topic-container:last-child{
+        display: flex;
+        align-items: center;
+        margin: 0;
+    }
+    span{
+        display: flex;
+    }
+    svg{
+        color:  #CFCFCF;
+        margin: 0 1.5em 0 0;
+    }
     li {
-        margin-left: 5rem;
+        font-size: 1.2em;
     }
 
     li :last-child {
@@ -59,6 +83,6 @@ const Details = styled.ul`
 `;
 
 export {
-    StyledTopic,
+    StyledChapter,
     Details,
 };

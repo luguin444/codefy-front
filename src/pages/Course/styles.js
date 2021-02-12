@@ -8,6 +8,19 @@ const OutterContainer = styled.div`
     display: flex;
     flex-direction: column;
 
+    .back{
+        width: 2em;
+        height: 2em;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.4);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-size: 1.2em;
+        cursor: pointer;
+    }
+
     @media (max-width: 800px) {
         top: 80px;
     }
@@ -159,7 +172,7 @@ const Accordeon = styled.section`
     }
 `;
 
-const TopicsContainer =  styled.div`
+const ChaptersContainer =  styled.div`
     background: #FFFFFF;
     width: 100%;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.15);
@@ -175,5 +188,5 @@ export {
     Progress,
     CourseButton,
     Accordeon,
-    TopicsContainer
+    ChaptersContainer
 };
