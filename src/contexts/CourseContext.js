@@ -4,10 +4,10 @@ const CourseContext = createContext();
 export default CourseContext;
 
 export function CourseProvider({ children }) {
-  const [course, setCourse] = useState(null);
+  const [courseContext, setCourseContext] = useState(null);
 
   return (
-    <CourseContext.Provider value={{ course, setCourse }}>
+    <CourseContext.Provider value={{ courseContext, setCourseContext }}>
       {children}
     </CourseContext.Provider>
   );
