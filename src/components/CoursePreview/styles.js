@@ -1,14 +1,15 @@
 import styled from 'styled-components';
 
 const StyledCoursePreview = styled.li`
-    width: 22%;
-    height: 50vh;
-    min-width: 267px;
+    width: 267px;
+    height: 355px;
     background: #FFFFFF;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.15);
     border-radius: 15px;
-    margin: 0 0 2em 0;
+    margin: 0 2em 2em 2em;
     font-family: 'Roboto', sans-serif;
+    overflow: hidden;
+    text-overflow: ellipsis;
     
     img{
         width: 100%;
@@ -29,7 +30,7 @@ const StyledCoursePreview = styled.li`
     .description{
         color: #777;
         line-height: 1.375em;
-        font-size: 1.125em;
+        font-size: 1.2em;
     }
 
     .courseName{
@@ -37,8 +38,7 @@ const StyledCoursePreview = styled.li`
     }
 
     @media (max-width: 800px) {
-        max-width: 80vw;
-        
+        margin: 0 0 2em 0;
         p{
             font-size: 14px;
         }

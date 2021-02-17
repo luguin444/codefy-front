@@ -17,14 +17,14 @@ const styledHome = styled.div`
     }
 
     .container{
-        width: 90%;
+        width: 85%;
         margin: 0 auto;
         
         ul{
             margin: 3em 0 0 0;
             display: flex;
             flex-wrap: wrap;
-            justify-content: space-between;
+            justify-content: center;
         }
     }
 
