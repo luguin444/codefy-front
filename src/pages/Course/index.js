@@ -3,10 +3,11 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import Avatar from 'react-avatar';
-import { IoIosArrowBack } from 'react-icons/io';
+import { FaAngleLeft } from 'react-icons/fa';
 import { 
     OutterContainer,
     BackgroundBanner,
+    BackButton,
     MainContainer,
     Presentation,
     CourseStatus,
@@ -49,10 +50,10 @@ export default function Course() {
     return (
       <OutterContainer>
         <BackgroundBanner />
+        <BackButton onClick={() => history.push('/home')} onKeyPress={() => history.push('/home')}> 
+          <FaAngleLeft />
+        </BackButton>
         <MainContainer>
-          <div className="back" onClick={() => history.push('/home')} onKeyPress={() => history.push('/home')}> 
-            <IoIosArrowBack />
-          </div>
           <Presentation>
             <h1>{course.name}</h1>
             <p>{course.description}</p>

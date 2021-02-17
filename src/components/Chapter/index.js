@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { IoIosArrowUp, IoIosArrowDown } from 'react-icons/io';
-import { BsFillCircleFill } from 'react-icons/bs';
+import { FaCircle } from 'react-icons/fa';
 
 import { StyledChapter, Details } from './styles';
 
@@ -24,7 +24,7 @@ export default function Chapter (props) {
             topics && topics.map(t => 
               <div key={t.id} className="topic-container">
                 <span>
-                  <BsFillCircleFill />
+                  <div><FaCircle /></div>
                   <li>{t.name}</li>
                 </span>
                 <p>Visualizar</p>
