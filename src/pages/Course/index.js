@@ -29,7 +29,7 @@ export default function Course() {
   const token = localStorage.getItem('token');
 
     useEffect(() => {
-      axios.get(`${process.env.API_BASE_URL}/clients/courses/${courseId}`)
+      axios.get(`${process.env.API_BASE_URL}/clients/courses/${courseId}`, { headers: { 'X-Access-Token': token } })
       .then(resp => {
         setCourse(resp.data);
       });
