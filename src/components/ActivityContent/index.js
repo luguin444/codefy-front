@@ -1,10 +1,10 @@
 import React from 'react';
 import StyledActivityContent from './styles';
 
-export default function ActivityContent({ activity }){
+export default function ActivityContent({ activity, activityType }){
     return (
       <StyledActivityContent>
-        {activity.type === 'theorie' ?
+        {activityType === 'theory' ?
           <iframe  
          src={activity.youtubeLink}
          frameBorder="0" 

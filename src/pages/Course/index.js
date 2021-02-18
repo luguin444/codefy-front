@@ -34,7 +34,7 @@ export default function Course() {
         setCourse(resp.data);
       });
     },[]);
-
+    
     function startCourse() {
       if (loading) return;
   
@@ -42,14 +42,14 @@ export default function Course() {
       axios.post(`${process.env.API_BASE_URL}/clients/courses/${courseId}`, {}, { headers: { 'X-Access-Token': token } })
       .then(() => {
         setCourseContext(course);
-        history.push(`/courses/${courseId}/chapter/${course.chapters[0].id}/topic/${course.chapters[0].topics[0].id}/activity/${course.chapters[0].topics[0].activities[0].id}`);
+        history.push(`/courses/${courseId}/chapter/${course.chapters[0].id}/topic/${course.chapters[0].topics[0].id}/theory/${course.chapters[0].topics[0].theories[0].id}`);
       })
       .catch(err => {
         console.log(err);
         setLoading(false);
       });
     }
-
+    
     return (
       <OutterContainer>
         <BackgroundBanner />

@@ -8,11 +8,12 @@ import CourseContext from '../../contexts/CourseContext';
 import StyledActivity from './styles';
 
 export default function Activity(){
-  const { courseId, chapterId, topicId, activityId } = useParams();
+  const { courseId, chapterId, topicId, activityType, activityId } = useParams();
   const { courseContext, setCourseContext } = useContext(CourseContext);
   const [chapter, setChapter] = useState(null);
   const [topic, setTopic] = useState(null);
-  const [activity, setActivity] = useState(null);
+  const [theory, setTheory] = useState(null);
+  const [exercise, setExercise] = useState(null);
   const history = useHistory();
   const token = localStorage.getItem('token');
 
@@ -25,34 +26,54 @@ export default function Activity(){
         setChapter(chapterNeeded);
         const topicNeeded = chapterNeeded.topics.find(t => t.id === parseInt(topicId));
         setTopic(topicNeeded);
-        const activityNeeded = topicNeeded.activities.find(a => a.id === parseInt(activityId));
-        setActivity(activityNeeded);
+        if (activityType === 'theory'){
+          const activityNeeded = topicNeeded.theories.find(a => a.id === parseInt(activityId));
+          setTheory(activityNeeded);
+        } else {
+          const activityNeeded = topicNeeded.exercises.find(a => a.id === parseInt(activityId));
+          setExercise(activityNeeded);
+        }
       });
     } else {
       const chapterNeeded = courseContext.chapters.find(c => c.id === parseInt(chapterId));
       setChapter(chapterNeeded);
       const topicNeeded = chapterNeeded.topics.find(t => t.id === parseInt(topicId));
       setTopic(topicNeeded);
-      const activityNeeded = topicNeeded.activities.find(a => a.id === parseInt(activityId));
-      setActivity(activityNeeded);
+      if (activityType === 'theory'){
+        const activityNeeded = topicNeeded.theories.find(a => a.id === parseInt(activityId));
+        setTheory(activityNeeded);
+      } else {
+        const activityNeeded = topicNeeded.exercises.find(a => a.id === parseInt(activityId));
+        setExercise(activityNeeded);
+      }
     }
-  }, [courseId, chapterId, topicId, activityId]);
+  }, [courseId, chapterId, topicId, activityType, activityId]);
 
   function handleActivity(){
-    const activitiesIds = topic.activities.map(a => a.id);
-    const currentActivity = activitiesIds.indexOf(activity.id);
-    const topicsIds = chapter.topics.map(t => t.id);
-    const currentTopic = topicsIds.indexOf(topic.id);
-    const chaptersIds = courseContext.chapters.map(c => c.id);
-    const currentChapter = chaptersIds.indexOf(chapter.id);
-    if (currentActivity !== topic.activities.length - 1){
-      history.push(`/courses/${courseId}/chapter/${chapterId}/topic/${topicId}/activity/${topic.activities[currentActivity + 1].id}`);
-    } else if (currentTopic !== chapter.topics.length - 1){
-      history.push(`/courses/${courseId}/chapter/${chapterId}/topic/${chapter.topics[currentTopic + 1].id}/activity/${chapter.topics[currentTopic + 1].activities[0].id}`);
-    } else if (currentChapter !== courseContext.chapters.length - 1){
-      history.push(`/courses/${courseId}/chapter/${courseContext.chapters[currentChapter + 1].id}/topic/${courseContext.chapters[currentChapter + 1].topics[0].id}/activity/${courseContext.chapters[currentChapter + 1].topics[0].activities[0].id}`);
-    } else {
-      history.push('/home');
+    if (activityType === 'theory'){
+      const theoryIds = topic.theories.map(t => t.id);
+      const currentTheory = theoryIds.indexOf(theory.id);
+      if (currentTheory !== theoryIds.length - 1){
+        history.push(`/courses/${courseId}/chapter/${chapterId}/topic/${topicId}/theory/${topic.theories[currentTheory + 1].id}`);
+      } else {
+        history.push(`/courses/${courseId}/chapter/${chapterId}/topic/${topicId}/exercise/${topic.exercises[0].id}`);
+      }
+    } else if (activityType === 'exercise'){
+      const exerciseIds = topic.exercises.map(e => e.id);
+      const currentExercise = exerciseIds.indexOf(exercise.id);
+      const topicsIds = chapter.topics.map(t => t.id);
+      const currentTopic = topicsIds.indexOf(topic.id);
+      const chaptersIds = courseContext.chapters.map(c => c.id);
+      const currentChapter = chaptersIds.indexOf(chapter.id);
+      if (currentExercise !== exerciseIds.length - 1){
+        history.push(`/courses/${courseId}/chapter/${chapterId}/topic/${topicId}/exercise/${topic.exercises[currentExercise + 1].id}`);
+      } else if (currentTopic !== chapter.topics.length - 1){
+        history.push(`/courses/${courseId}/chapter/${chapterId}/topic/${chapter.topics[currentTopic + 1].id}/theory/${chapter.topics[currentTopic + 1].theories[0].id}`);
+      } else if (currentChapter !== courseContext.chapters.length - 1 && courseContext.chapters[currentChapter + 1].topics[0].theories.length !== 0){
+        history.push(`/courses/${courseId}/chapter/${courseContext.chapters[currentChapter + 1].id}/topic/${courseContext.chapters[currentChapter + 1].topics[0].id}/theory/${courseContext.chapters[currentChapter + 1].topics[0].theories[0].id}`);
+      } else {
+        history.push('/home');
+      }
     }
   }
   return (
@@ -66,17 +87,19 @@ export default function Activity(){
       }
       
       {
-        topic && activity &&
+        topic && (theory || exercise) &&
         <ActivityProgress 
-        activities={topic.activities} 
-        activity={activity} 
+        theories={topic.theories} 
+        exercises={topic.exercises}
+        activity={activityType === 'theory' ? theory : exercise} 
         />
       }
       
       {
-        activity &&
-          <ActivityContent 
-        activity={activity} 
+        (theory || exercise) &&
+        <ActivityContent 
+        activity={activityType === 'theory' ? theory : exercise}
+        activityType={activityType} 
         />
       }
       
