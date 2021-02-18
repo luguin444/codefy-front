@@ -8,19 +8,6 @@ const OutterContainer = styled.div`
     display: flex;
     flex-direction: column;
 
-    .back{
-        width: 2em;
-        height: 2em;
-        border-radius: 8px;
-        background: rgba(255, 255, 255, 0.4);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #fff;
-        font-size: 1.2em;
-        cursor: pointer;
-    }
-
     @media (max-width: 800px) {
         top: 80px;
     }
@@ -35,19 +22,47 @@ const BackgroundBanner = styled.div`
     height: 33vh;
     max-height: 300px;
     background: linear-gradient(180deg, #EFDA4F 0%, rgba(239, 218, 79, 0.56) 100%);
+
+    @media (max-width: 360px) {
+        height: 44vh;
+        max-height: initial;
+    }
+`;
+
+const BackButton = styled.div`
+    position: absolute;
+    top: 20px;
+    left: 15px;
+    width: 1.4em;
+    height: 1.4em;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 2rem;
+    z-index: 3;
+    cursor: pointer;
+
+    @media (max-width: 760px) {
+        display: none;
+    }
 `;
 
 const MainContainer = styled.section`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items: center;
     z-index: 2;
-    padding: 35px calc(6vw + 17px) 35px 6vw;
+    padding: 35px 45px;
     width: 100vw;
     font-family: 'Roboto', sans-serif;
 
     @media (max-width: 760px) {
-        padding: 35px 7.5vw 35px 6vw;
+        width: 95%;
+        padding: 25px 0 0 12px;
     }
 `;
 
@@ -71,6 +86,7 @@ const Presentation = styled.div`
 
 const CourseStatus = styled.div`
     width: 100%;
+    max-width: 900px;
     background: #FFFFFF;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.15);
     border-radius: 15px;
@@ -165,6 +181,8 @@ const Accordeon = styled.section`
     flex-direction: column;
     justify-content: space-between;
     margin: 3.5rem 0;
+    width: 100%;
+    max-width: 900px;
 
     h2 {
         font-size: 32px;
@@ -175,13 +193,20 @@ const Accordeon = styled.section`
 const ChaptersContainer =  styled.div`
     background: #FFFFFF;
     width: 100%;
+    max-width: 900px;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.15);
     border-radius: 1rem;
+
+    & > :last-child {
+       border-bottom-left-radius: 15px;
+       border-bottom-right-radius: 15px; 
+    }
 `;
 
 export {
     OutterContainer,
     BackgroundBanner,
+    BackButton,
     MainContainer,
     Presentation,
     CourseStatus,
