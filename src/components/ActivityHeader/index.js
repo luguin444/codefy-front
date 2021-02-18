@@ -2,14 +2,15 @@
 import React from 'react';
 import { IoIosArrowBack } from 'react-icons/io';
 import { IoIosArrowDown } from 'react-icons/io';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import StyledActivityHeader from './styles';
 
 export default function ActivityHeader({ chapter, topic }){
   const history = useHistory();
+  const { courseId } = useParams();
   return (
     <StyledActivityHeader>
-      <div className="back" onClick={() => history.push('/home')} onKeyPress={() => history.push('/home')}>
+      <div className="back" onClick={() => history.push(`/course/${courseId}`)} onKeyPress={() => history.push(`/course/${courseId}`)}>
         <IoIosArrowBack />
       </div>
       <div className='chapter-topic'>
