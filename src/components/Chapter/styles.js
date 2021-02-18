@@ -66,19 +66,26 @@ const Details = styled.ul`
         align-items: center;
         margin: 0;
     }
+
     span{
         display: flex;
     }
+
     svg{
-        color:  #CFCFCF;
-        margin: 0 1.5em 0 0;
+        color: #CFCFCF;
     }
+
     li {
         font-size: 1.2em;
+        margin-left: 1.5rem;
     }
 
     li :last-child {
         border-bottom: 1px solid #E7E7E7;
+    }
+
+    @media (max-width: 360px) {
+        padding: 20px;
     }
 `;
 

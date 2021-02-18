@@ -3,10 +3,11 @@ import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import Avatar from 'react-avatar';
-import { IoIosArrowBack } from 'react-icons/io';
+import { FaAngleLeft } from 'react-icons/fa';
 import { 
     OutterContainer,
     BackgroundBanner,
+    BackButton,
     MainContainer,
     Presentation,
     CourseStatus,
@@ -38,7 +39,7 @@ export default function Course() {
       if (loading) return;
   
       setLoading(true);
-      axios.post(`${process.env.API_BASE_URL}/clients/courses/${courseId}`, { headers: { 'X-Access-Token': token } })
+      axios.post(`${process.env.API_BASE_URL}/clients/courses/${courseId}`, {}, { headers: { 'X-Access-Token': token } })
       .then(() => {
         setCourseContext(course);
         history.push(`/courses/${courseId}/chapter/${course.chapters[0].id}/topic/${course.chapters[0].topics[0].id}/activity/${course.chapters[0].topics[0].activities[0].id}`);
@@ -52,10 +53,10 @@ export default function Course() {
     return (
       <OutterContainer>
         <BackgroundBanner />
+        <BackButton onClick={() => history.push('/home')} onKeyPress={() => history.push('/home')}> 
+          <FaAngleLeft />
+        </BackButton>
         <MainContainer>
-          <div className="back" onClick={() => history.push('/home')} onKeyPress={() => history.push('/home')}> 
-            <IoIosArrowBack />
-          </div>
           <Presentation>
             <h1>{course.name}</h1>
             <p>{course.description}</p>
