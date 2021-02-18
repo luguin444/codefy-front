@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const StyledActivityProgress = styled.section`
-    width: 100vw;
+    width: 100%;
     color: #fff;
     display: flex;
     justify-content: center;

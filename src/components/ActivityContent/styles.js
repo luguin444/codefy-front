@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const StyledActivityContent = styled.section`
-    width: 100vw;
+    width: 100%;
     display: flex;
     justify-content: center;
     margin-top: 2.5em;
