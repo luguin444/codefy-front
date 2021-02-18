@@ -49,19 +49,23 @@ export function CourseProvider({ children }) {
                   'name': 'Entrando na plataforma',
                   'activities': [
                     {
+                        'id': 5,
                       'youtubeLink': 'https://www.youtube.com/embed/Ptbk2af68e8',
                       'topicId': 156,
                       'type': 'theorie'
                     },
                     {
+                        'id': 6,
                       'topicId': 156,
                       'type': 'exercise'
                     },
                     {
+                        'id': 7,
                       'topicId': 156,
                       'type': 'exercise'
                     },
                     {
+                        'id': 8,
                       'topicId': 156,
                       'type': 'exercise'
                     },
@@ -78,19 +82,23 @@ export function CourseProvider({ children }) {
                 'name': 'Como usar',
                 'activities': [
                   {
+                    'id': 9,
                     'youtubeLink': 'https://www.youtube.com/embed/Ptbk2af68e8',
                     'topicId': 160,
                     'type': 'theorie'
                   },
                   {
+                    'id': 10,
                     'topicId': 156,
                     'type': 'exercise'
                   },
                   {
+                    'id': 11,
                     'topicId': 156,
                     'type': 'exercise'
                   },
                   {
+                    'id': 12,
                     'topicId': 156,
                     'type': 'exercise'
                   },

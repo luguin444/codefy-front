@@ -11,7 +11,7 @@ export default function ActivitieProgress({ activities, activity }){
           activities.map((a, i) => {
             return (
               <>
-                <div  className={activity === i ? 'each-content now' : 'each-content grey'}>
+                <div  className={activity.id === a.id ? 'each-content now' : 'each-content grey'}>
                   <BsCircleFill />
                   <p>{a.type === 'theorie' ? 'Teoria' : 'Exercício'}</p>
                 </div>
