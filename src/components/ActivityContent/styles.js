@@ -5,7 +5,7 @@ const StyledActivityContent = styled.section`
     display: flex;
     justify-content: center;
     margin-top: 2.5em;
-    iframe{
+    react-player{
         width: 60vw;
         height: 35vw;
     }

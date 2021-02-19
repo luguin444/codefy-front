@@ -20,6 +20,7 @@ const StyledActivityHeader = styled.nav`
         background: rgba(255, 255, 255, 0.4);
         border-radius: 6px;
         cursor: pointer;
+        z-index: 1;
         svg{
             font-size: 1.2em;
             font-weight: bold;
