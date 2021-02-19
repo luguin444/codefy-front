@@ -52,7 +52,7 @@ export default function Course() {
         setLoading(false);
       });
     }
-
+    
     function numberOfActivities(chapters){
       const numberTheories = [];
       const numberExercises = [];
