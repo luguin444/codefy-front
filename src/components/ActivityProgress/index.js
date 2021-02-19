@@ -12,7 +12,7 @@ export default function ActivitieProgress({ theories, exercises, activity }){
           {
           activities.map((a, i) => {
             return (
-              <span key={a.id}>
+              <span key={i}>
                 <div  className={JSON.stringify(activity) === JSON.stringify(a) ? 'each-content now' : 'each-content grey'}>
                   <BsCircleFill />
                   <p>{a.youtubeLink ? 'Teoria' : 'Exercício'}</p>
