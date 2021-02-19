@@ -4,7 +4,7 @@ import StyledActivitieProgress from './styles';
 
 export default function ActivitieProgress({ theories, exercises, activity }){
   const activities = [...theories, ...exercises];
-  
+
     return (
       <StyledActivitieProgress>
         
@@ -12,13 +12,13 @@ export default function ActivitieProgress({ theories, exercises, activity }){
           {
           activities.map((a, i) => {
             return (
-              <>
+              <span key={a.id}>
                 <div  className={JSON.stringify(activity) === JSON.stringify(a) ? 'each-content now' : 'each-content grey'}>
                   <BsCircleFill />
                   <p>{a.youtubeLink ? 'Teoria' : 'Exercício'}</p>
                 </div>
                 {i !== activities.length - 1 && <div className="bar"></div>}
-              </>
+              </span>
             );
           })
         }

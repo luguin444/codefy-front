@@ -40,6 +40,10 @@ const StyledActivityProgress = styled.section`
             margin: 5.5px 0 0 0;
             background:  #B3B3B3;
         }
+
+        span{
+            display: flex;
+        }
     }
 `;
 
