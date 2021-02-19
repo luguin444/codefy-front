@@ -8,7 +8,7 @@ export default function Header(){
   const currentRoute = useLocation();
   const name = localStorage.getItem('name');
 
-  if (currentRoute.pathname === '/' || currentRoute.pathname === '/activities') {
+  if (currentRoute.pathname === '/' || currentRoute.pathname.includes('/courses')) {
     return null;
   }
 

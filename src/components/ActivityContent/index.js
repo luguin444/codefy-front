@@ -1,18 +1,14 @@
 import React from 'react';
 import StyledActivityContent from './styles';
+import ReactPlayer from 'react-player/youtube';
 
-export default function ActivityContent({ activity }){
+export default function ActivityContent({ activity, activityType }){
     return (
       <StyledActivityContent>
-        {activity.type === 'theorie' ?
-          <iframe  
-         src={activity.youtubeLink}
-         frameBorder="0" 
-         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen 
-         title="theory">
-          </iframe>
+        {activityType === 'theory' ?
+          <ReactPlayer url={activity.youtubeLink} className='react-player' />
           :
-          <h1>Exercício em breve</h1>
+          <h1>{activity ? activity.title : 'Exercício em breve'}</h1>
         }
        
       </StyledActivityContent>

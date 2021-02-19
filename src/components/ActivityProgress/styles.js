@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const StyledActivityProgress = styled.section`
-    width: 100vw;
+    width: 100%;
     color: #fff;
     display: flex;
     justify-content: center;
@@ -39,6 +39,10 @@ const StyledActivityProgress = styled.section`
             height: 2px;
             margin: 5.5px 0 0 0;
             background:  #B3B3B3;
+        }
+
+        span{
+            display: flex;
         }
     }
 `;

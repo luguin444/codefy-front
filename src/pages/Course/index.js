@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import Avatar from 'react-avatar';
 import { FaAngleLeft } from 'react-icons/fa';
@@ -17,9 +17,11 @@ import {
     ChaptersContainer
 } from './styles';
 import Chapter from '../../components/Chapter';
+import CourseContext from '../../contexts/CourseContext';
 
 export default function Course() {
   const { courseId } = useParams();
+  const { setCourseContext } = useContext(CourseContext);
   const [loading, setLoading] = useState(false);
   const [course, setCourse] = useState({});
   const history = useHistory();
@@ -27,7 +29,7 @@ export default function Course() {
   const token = localStorage.getItem('token');
 
     useEffect(() => {
-      axios.get(`${process.env.API_BASE_URL}/clients/courses/${courseId}`)
+      axios.get(`${process.env.API_BASE_URL}/clients/courses/${courseId}`, { headers: { 'X-Access-Token': token } })
       .then(resp => {
         setCourse(resp.data);
       });
@@ -39,14 +41,15 @@ export default function Course() {
       setLoading(true);
       axios.post(`${process.env.API_BASE_URL}/clients/courses/${courseId}`, {}, { headers: { 'X-Access-Token': token } })
       .then(() => {
-        history.push('/activities');
+        setCourseContext(course);
+        history.push(`/courses/${courseId}/chapter/${course.chapters[0].id}/topic/${course.chapters[0].topics[0].id}/theory/${course.chapters[0].topics[0].theories[0].id}`);
       })
       .catch(err => {
         console.log(err);
         setLoading(false);
       });
     }
-
+    
     return (
       <OutterContainer>
         <BackgroundBanner />

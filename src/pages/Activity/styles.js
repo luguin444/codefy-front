@@ -1,13 +1,14 @@
 import styled from 'styled-components';
 
 const StyledActivity = styled.div`
-    width: 100vw;
+    width: 100%;
     min-height: 100vh;
     background: #3D3D3D;
     font-family: 'Roboto', sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-bottom: 30px;
     .next-container{
         width: 60vw;
         margin: 1em 0 0 0;
@@ -37,7 +38,7 @@ const StyledActivity = styled.div`
             width: 18%;
             background: #46A7D4;
             border-radius: 0.5em;
-            padding: 0.5em;
+            padding: 0.8em 0;
             color: #fff;
             font-weight: bold;
             font-size: 0.9em;
