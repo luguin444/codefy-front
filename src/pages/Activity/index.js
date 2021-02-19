@@ -49,14 +49,21 @@ export default function Activity(){
     }
   }, [courseId, chapterId, topicId, activityType, activityId]);
 
+  function nextUrl(course, chapter, topic, type, activity){
+    const url = `/courses/${course}/chapter/${chapter}/topic/${topic}/${type}/${activity}`;
+    return url;
+  }
+
   function handleActivity(){
     if (activityType === 'theory'){
       const theoryIds = topic.theories.map(t => t.id);
       const currentTheory = theoryIds.indexOf(theory.id);
       if (currentTheory !== theoryIds.length - 1){
-        history.push(`/courses/${courseId}/chapter/${chapterId}/topic/${topicId}/theory/${topic.theories[currentTheory + 1].id}`);
+        const nextActivityId = topic.theories[currentTheory + 1].id;
+        history.push(nextUrl(courseId, chapterId, topicId, 'theory', nextActivityId));
       } else {
-        history.push(`/courses/${courseId}/chapter/${chapterId}/topic/${topicId}/exercise/${topic.exercises[0].id}`);
+        const nextActivityId = topic.exercises[0].id;
+        history.push(nextUrl(courseId, chapterId, topicId, 'exercise', nextActivityId));
       }
     } else if (activityType === 'exercise'){
       const exerciseIds = topic.exercises.map(e => e.id);
@@ -66,11 +73,17 @@ export default function Activity(){
       const chaptersIds = courseContext.chapters.map(c => c.id);
       const currentChapter = chaptersIds.indexOf(chapter.id);
       if (currentExercise !== exerciseIds.length - 1){
-        history.push(`/courses/${courseId}/chapter/${chapterId}/topic/${topicId}/exercise/${topic.exercises[currentExercise + 1].id}`);
+        const nextActivityId = topic.exercises[currentExercise + 1].id;
+        history.push(nextUrl(courseId, chapterId, topicId, 'exercise', nextActivityId));
       } else if (currentTopic !== chapter.topics.length - 1){
-        history.push(`/courses/${courseId}/chapter/${chapterId}/topic/${chapter.topics[currentTopic + 1].id}/theory/${chapter.topics[currentTopic + 1].theories[0].id}`);
+        const nextTopicId = chapter.topics[currentTopic + 1].id;
+        const nextActivityId = chapter.topics[currentTopic + 1].theories[0].id;
+        history.push(nextUrl(courseId, chapterId, nextTopicId, 'theory', nextActivityId));
       } else if (currentChapter !== courseContext.chapters.length - 1 && courseContext.chapters[currentChapter + 1].topics[0].theories.length !== 0){
-        history.push(`/courses/${courseId}/chapter/${courseContext.chapters[currentChapter + 1].id}/topic/${courseContext.chapters[currentChapter + 1].topics[0].id}/theory/${courseContext.chapters[currentChapter + 1].topics[0].theories[0].id}`);
+        const nextChapterId = courseContext.chapters[currentChapter + 1].id;
+        const nextTopicId = courseContext.chapters[currentChapter + 1].topics[0].id;
+        const nextActivityId = courseContext.chapters[currentChapter + 1].topics[0].theories[0].id;
+        history.push(nextUrl(courseId, nextChapterId, nextTopicId, 'theory', nextActivityId));
       } else {
         history.push('/home');
       }
@@ -82,7 +95,8 @@ export default function Activity(){
         chapter && topic && 
           <ActivityHeader 
           chapter={chapter.name} 
-          topic={topic.name} 
+          topic={topic.name}
+          chapters={courseContext.chapters} 
           />
       }
       

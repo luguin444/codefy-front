@@ -1,13 +1,14 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import React from 'react';
-import { IoIosArrowBack } from 'react-icons/io';
-import { IoIosArrowDown } from 'react-icons/io';
+import React, { useState } from 'react';
+import { IoIosArrowBack, IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
+import { FaCircle } from 'react-icons/fa';
 import { useHistory, useParams } from 'react-router-dom';
 import StyledActivityHeader from './styles';
 
-export default function ActivityHeader({ chapter, topic }){
+export default function ActivityHeader({ chapter, topic, chapters }){
   const history = useHistory();
   const { courseId } = useParams();
+  const [open, setOpen] = useState(false);
   return (
     <StyledActivityHeader>
       <div className="back" onClick={() => history.push(`/course/${courseId}`)} onKeyPress={() => history.push(`/course/${courseId}`)}>
@@ -15,7 +16,34 @@ export default function ActivityHeader({ chapter, topic }){
       </div>
       <div className='chapter-topic'>
         <p>{chapter} - {topic}</p>
-        <IoIosArrowDown />
+        {
+          open ? <IoIosArrowUp onClick={() => setOpen(false)} /> : <IoIosArrowDown onClick={() => setOpen(true)} />
+        }
+        {
+          open &&
+          <ul className="navigation">
+            {
+            chapters.map(c => {
+              return (
+                <li key={c.id}>
+                  <p className="chapter">{c.name}</p>
+                  {
+                    c.topics.map(t => {
+                      return (
+                        <div className="topic-container" key={t.id}>
+                          <FaCircle />
+                          <p className="topic" >{t.name}</p>
+                        </div>
+                      );
+                    })
+                  }
+                </li>
+              
+              );
+            })
+          }
+          </ul>
+        }
       </div>
     </StyledActivityHeader>
   );

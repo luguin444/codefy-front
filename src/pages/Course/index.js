@@ -34,7 +34,7 @@ export default function Course() {
         setCourse(resp.data);
       });
     },[]);
-    
+
     function startCourse() {
       if (loading) return;
   

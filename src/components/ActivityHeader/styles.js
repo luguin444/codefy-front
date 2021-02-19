@@ -28,6 +28,7 @@ const StyledActivityHeader = styled.nav`
     }
 
     .chapter-topic{
+        position: relative;
         display: flex;
         color: #D6D6D6;
         justify-content: center;
@@ -43,6 +44,57 @@ const StyledActivityHeader = styled.nav`
         }
     }
 
+    .navigation{
+        width: 378px;
+        height: 400px;
+        overflow-y: scroll;
+        position absolute;
+        top: calc(100% + 16px);
+        background: #303030;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        padding: 20px;
+        border-bottom-right-radius: 1em;
+        border-bottom-left-radius: 1em;
+
+        ::-webkit-scrollbar-track {
+            background-color: transparent;
+            margin: 0.5em;
+        }
+        ::-webkit-scrollbar {
+            width: 10px;
+            background: transparent;
+            padding: 0.5em;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #5B5B5B;
+            margin: 0 5px 0 0;
+            border-radius: 1em;
+        }
+    }
+
+    .chapter{
+        font-weight: bold;
+        font-size: 18px;
+        line-height: 23px;
+    }
+
+    .topic{
+        font-weight: 300;
+        font-size: 16px;
+        line-height: 22px;
+    }
+
+    .topic-container{
+        display: flex;
+        align-items: center;
+        margin: 0.5em 0;
+        padding: 0 0 0 0.5em;
+        svg{
+            font-size: 0.8em;
+            margin: 0 0.8em 0 0;
+        }
+        cursor: pointer;
+    }
 `;
 
 export default StyledActivityHeader;
