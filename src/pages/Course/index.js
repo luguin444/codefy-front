@@ -24,8 +24,6 @@ export default function Course() {
   const { setCourseContext } = useContext(CourseContext);
   const [loading, setLoading] = useState(false);
   const [course, setCourse] = useState({});
-  const [theories, setTheories] = useState([]);
-  const [exercises, setExercises] = useState([]);
   const history = useHistory();
   const name = localStorage.getItem('name');
   const token = localStorage.getItem('token');
@@ -34,7 +32,6 @@ export default function Course() {
       axios.get(`${process.env.API_BASE_URL}/clients/courses/${courseId}`, { headers: { 'X-Access-Token': token } })
       .then(resp => {
         setCourse(resp.data);
-        numberOfActivities(resp.data.chapters);
       });
     },[]);
 
@@ -51,25 +48,6 @@ export default function Course() {
         console.log(err);
         setLoading(false);
       });
-    }
-    
-    function numberOfActivities(chapters){
-      const numberTheories = [];
-      const numberExercises = [];
-
-      chapters.forEach(c => {
-        let counterTheories = 0;
-        let counterExercises = 0;
-        c.topics.forEach(t => {
-          counterTheories += t.theories.length;
-          counterExercises += t.exercises.length;
-        });
-        numberTheories.push(counterTheories);
-        numberExercises.push(counterExercises);
-      });
-
-      setTheories(numberTheories);
-      setExercises(numberExercises);
     }
    
     return (
@@ -104,7 +82,7 @@ export default function Course() {
             <ChaptersContainer>
               {
                 course.chapters && 
-                course.chapters.map((c, i) => <Chapter text={c.name} content={`${theories[i]} aulas  •  ${exercises[i]} exercícios`} topics={c.topics} key={c.id} />)
+                course.chapters.map((c) => <Chapter text={c.name} content={`${c.theoryCount} aulas  •  ${c.exerciseCount} exercícios`} topics={c.topics} key={c.id} />)
               }
             </ChaptersContainer>
           </Accordeon>
