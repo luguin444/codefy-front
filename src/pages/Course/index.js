@@ -40,9 +40,8 @@ export default function Course() {
   
       setLoading(true);
       axios.post(`${process.env.API_BASE_URL}/clients/courses/${courseId}`, {}, { headers: { 'X-Access-Token': token } })
-      .then(() => {
-        setCourseContext(course);
-        history.push(`/courses/${courseId}/chapter/${course.chapters[0].id}/topic/${course.chapters[0].topics[0].id}/theory/${course.chapters[0].topics[0].theories[0].id}`);
+      .then((response) => {
+        history.push(`/courses/${courseId}/chapter/${response.data.chapterId}/topic/${response.data.topicId}/theory/${response.data.theoryId}`);
       })
       .catch(err => {
         console.log(err);
