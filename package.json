@@ -29,6 +29,8 @@
   "devDependencies": {
     "eslint": "^7.19.0",
     "eslint-plugin-react": "^7.22.0",
-    "eslint-plugin-styled-components-a11y": "^0.0.28"
+    "eslint-plugin-styled-components-a11y": "^0.0.28",
+    "git-commit-msg-linter": "^3.0.0",
+    "husky": "^5.1.1"
   }
 }
