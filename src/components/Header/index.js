@@ -23,6 +23,7 @@ export default function Header(){
     .then(() => {
         localStorage.removeItem('token');
         localStorage.removeItem('name');
+        setDropDownisClosed(true);
         history.push('/');
     })
     .catch(() => {
