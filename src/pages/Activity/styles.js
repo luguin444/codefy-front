@@ -26,6 +26,15 @@ const StyledActivity = styled.div`
                 border: 1px solid #9D9D9D;
                 border-radius: 2px;
                 cursor: pointer;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .check {
+                color: #76DF93;
+            }
+            .checked{
+                border: 1px solid  #76DF93;
             }
             p{
                 margin: 0 0 0 0.5em;

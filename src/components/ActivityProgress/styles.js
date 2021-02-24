@@ -48,6 +48,17 @@ const StyledActivityProgress = styled.section`
                 cursor: pointer;
             }
         }
+
+        .done {
+            color: #76DF93;
+        }
+        
+        .bar-done {
+            width: 6vw;
+            height: 2px;
+            margin: 5.5px 0 0 0;
+            background: #76DF93;
+        }
     }
 `;
 

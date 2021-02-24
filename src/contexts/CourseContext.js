@@ -53,7 +53,7 @@ export function CourseProvider({ children }) {
   }
 
   return (
-    <CourseContext.Provider value={{ courseContext, setCourseContext, activities }}>
+    <CourseContext.Provider value={{ courseContext, setCourseContext, activities, setActivities }}>
       {children}
     </CourseContext.Provider>
   );

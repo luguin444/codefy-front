@@ -18,11 +18,18 @@ export default function ActivitieProgress({ progress , activity }){
           progress.map((p, i) => {
             return (
               <span key={i}>
-                <div  className={JSON.stringify(activity) === JSON.stringify(p) ? 'each-content now' : 'each-content grey'}>
+                <div  
+                className={
+                JSON.stringify(activity) === JSON.stringify(p) ? 
+                'each-content now' :
+                p.done ? 
+                'each-content done' :
+                'each-content grey'
+                }>
                   <BsCircleFill onClick={() => handleClick(p.chapterId, p.topicId, p.type, p.id)} />
                   <p>{p.type === 'theory' ? 'Teoria' : 'Exercício'}</p>
                 </div>
-                {i !== progress.length - 1 && <div className="bar"></div>}
+                {i !== progress.length - 1 && <div className={p.done ? 'bar-done' : 'bar'}></div>}
               </span>
             );
           })
