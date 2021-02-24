@@ -17,11 +17,9 @@ import {
     ChaptersContainer
 } from './styles';
 import Chapter from '../../components/Chapter';
-import CourseContext from '../../contexts/CourseContext';
 
 export default function Course() {
   const { courseId } = useParams();
-  const { setCourseContext } = useContext(CourseContext);
   const [loading, setLoading] = useState(false);
   const [course, setCourse] = useState({});
   const history = useHistory();
@@ -41,7 +39,7 @@ export default function Course() {
       setLoading(true);
       axios.post(`${process.env.API_BASE_URL}/clients/courses/${courseId}`, {}, { headers: { 'X-Access-Token': token } })
       .then((response) => {
-        history.push(`/courses/${courseId}/chapter/${response.data.chapterId}/topic/${response.data.topicId}/theory/${response.data.theoryId}`);
+        history.push(`/course/${courseId}/chapter/${response.data.chapterId}/topic/${response.data.topicId}/theory/${response.data.theoryId}`);
       })
       .catch(err => {
         console.log(err);

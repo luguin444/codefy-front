@@ -19,7 +19,7 @@ export default function App() {
               <Route path='/' component={LoginPage} exact/>
               <Route path='/home' component={Home} exact />
               <Route path='/course/:courseId' component={Course} exact/>
-              <Route path='/courses/:courseId/chapter/:chapterId/topic/:topicId/:activityType/:activityId' component={Activity} exact />
+              <Route path='/course/:courseId/chapter/:chapterId/topic/:topicId/:activityType/:activityId' component={Activity} exact />
             </Switch>
           </Router>
         </CourseProvider>

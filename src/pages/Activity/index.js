@@ -9,111 +9,70 @@ import StyledActivity from './styles';
 
 export default function Activity(){
   const { courseId, chapterId, topicId, activityType, activityId } = useParams();
-  const { courseContext, setCourseContext } = useContext(CourseContext);
-  const [chapter, setChapter] = useState(null);
-  const [topic, setTopic] = useState(null);
-  const [theory, setTheory] = useState(null);
-  const [exercise, setExercise] = useState(null);
+  const { courseContext, setCourseContext, activities } = useContext(CourseContext);
+  const [activity, setActivity] = useState(null);
+  const [progress, setProgress] = useState(null);
+  const [end, setEnd] = useState(false);
   const history = useHistory();
   const token = localStorage.getItem('token');
 
   useEffect(() => {
     if (!courseContext || courseContext.id !== parseInt(courseId)) {
-      axios.get(`${process.env.API_BASE_URL}/clients/courses/${courseId}`, { headers: { 'X-Access-Token': token } })
+      axios.get(`${process.env.API_BASE_URL}/clients/courses/${courseId}/activities`, { headers: { 'X-Access-Token': token } })
       .then(resp => {
         setCourseContext(resp.data);
-        const chapterNeeded = resp.data.chapters.find(c => c.id === parseInt(chapterId));
-        setChapter(chapterNeeded);
-        const topicNeeded = chapterNeeded.topics.find(t => t.id === parseInt(topicId));
-        setTopic(topicNeeded);
-        if (activityType === 'theory'){
-          const activityNeeded = topicNeeded.theories.find(a => a.id === parseInt(activityId));
-          setTheory(activityNeeded);
-        } else {
-          const activityNeeded = topicNeeded.exercises.find(a => a.id === parseInt(activityId));
-          setExercise(activityNeeded);
-        }
       });
     } else {
-      const chapterNeeded = courseContext.chapters.find(c => c.id === parseInt(chapterId));
-      setChapter(chapterNeeded);
-      const topicNeeded = chapterNeeded.topics.find(t => t.id === parseInt(topicId));
-      setTopic(topicNeeded);
-      if (activityType === 'theory'){
-        const activityNeeded = topicNeeded.theories.find(a => a.id === parseInt(activityId));
-        setTheory(activityNeeded);
-      } else {
-        const activityNeeded = topicNeeded.exercises.find(a => a.id === parseInt(activityId));
-        setExercise(activityNeeded);
-      }
+      getActivity();
+      getProgress();
     }
   }, [courseId, chapterId, topicId, activityType, activityId]);
 
-  function nextUrl(course, chapter, topic, type, activity){
-    const url = `/courses/${course}/chapter/${chapter}/topic/${topic}/${type}/${activity}`;
-    return url;
+  useEffect(() => {
+    if (activities) getActivity();
+    if (activities) getProgress();
+  }, [activities]);
+
+  function getActivity(){
+    const currentActivity = activities.find(a => a.type === activityType && a.id === parseInt(activityId));
+    setActivity(currentActivity);
+  }
+
+  function getProgress(){
+    const topicActivities = activities.filter(a => a.topicId === parseInt(topicId));
+    setProgress(topicActivities);
   }
 
   function handleActivity(){
-    if (activityType === 'theory'){
-      const theoryIds = topic.theories.map(t => t.id);
-      const currentTheory = theoryIds.indexOf(theory.id);
-      if (currentTheory !== theoryIds.length - 1){
-        const nextActivityId = topic.theories[currentTheory + 1].id;
-        history.push(nextUrl(courseId, chapterId, topicId, 'theory', nextActivityId));
-      } else {
-        const nextActivityId = topic.exercises[0].id;
-        history.push(nextUrl(courseId, chapterId, topicId, 'exercise', nextActivityId));
-      }
-    } else if (activityType === 'exercise'){
-      const exerciseIds = topic.exercises.map(e => e.id);
-      const currentExercise = exerciseIds.indexOf(exercise.id);
-      const topicsIds = chapter.topics.map(t => t.id);
-      const currentTopic = topicsIds.indexOf(topic.id);
-      const chaptersIds = courseContext.chapters.map(c => c.id);
-      const currentChapter = chaptersIds.indexOf(chapter.id);
-      if (currentExercise !== exerciseIds.length - 1){
-        const nextActivityId = topic.exercises[currentExercise + 1].id;
-        history.push(nextUrl(courseId, chapterId, topicId, 'exercise', nextActivityId));
-      } else if (currentTopic !== chapter.topics.length - 1){
-        const nextTopicId = chapter.topics[currentTopic + 1].id;
-        const nextActivityId = chapter.topics[currentTopic + 1].theories[0].id;
-        history.push(nextUrl(courseId, chapterId, nextTopicId, 'theory', nextActivityId));
-      } else if (currentChapter !== courseContext.chapters.length - 1 && courseContext.chapters[currentChapter + 1].topics[0].theories.length !== 0){
-        const nextChapterId = courseContext.chapters[currentChapter + 1].id;
-        const nextTopicId = courseContext.chapters[currentChapter + 1].topics[0].id;
-        const nextActivityId = courseContext.chapters[currentChapter + 1].topics[0].theories[0].id;
-        history.push(nextUrl(courseId, nextChapterId, nextTopicId, 'theory', nextActivityId));
-      } else {
-        history.push('/home');
-      }
+    const activityIndex = activities.findIndex(a => a.type === activity.type && a.id === activity.id);
+    if (activityIndex === activities.length - 2){
+      setEnd(true);
     }
+    history.push(`/course/${courseId}/chapter/${activities[activityIndex + 1].chapterId}/topic/${activities[activityIndex + 1].topicId}/${activities[activityIndex + 1].type}/${activities[activityIndex + 1].id}`);
   }
   return (
     <StyledActivity>
       {
-        chapter && topic && 
+        activity &&
           <ActivityHeader 
-          chapter={chapter.name} 
-          topic={topic.name}
+          chapter={activity.chapterName} 
+          topic={activity.topicName}
           chapters={courseContext.chapters} 
           />
       }
       
       {
-        topic && (theory || exercise) &&
+        progress &&
         <ActivityProgress 
-        theories={topic.theories} 
-        exercises={topic.exercises}
-        activity={activityType === 'theory' ? theory : exercise} 
+        progress={progress}
+        activity={activity} 
         />
       }
       
       {
-        (theory || exercise) &&
+        activity &&
         <ActivityContent 
-        activity={activityType === 'theory' ? theory : exercise}
-        activityType={activityType} 
+        activity={activity}
         />
       }
       
@@ -122,7 +81,9 @@ export default function Activity(){
           <div className="checkbox"></div> 
           <p>Marcar como concluído</p>
         </div>
-        <button type='button' onClick={() => handleActivity()}>Avançar {'>>'}</button>
+        {
+          !end && <button type='button' onClick={() => handleActivity()}>Avançar {'>>'}</button>
+        }
       </form>
     </StyledActivity>
     );

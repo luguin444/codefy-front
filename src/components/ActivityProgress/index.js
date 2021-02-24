@@ -2,22 +2,20 @@ import React from 'react';
 import { BsCircleFill } from 'react-icons/bs';
 import StyledActivitieProgress from './styles';
 
-export default function ActivitieProgress({ theories, exercises, activity }){
-  const activities = [...theories, ...exercises];
-
+export default function ActivitieProgress({ progress , activity }){
     return (
       <StyledActivitieProgress>
         
         <div className="progress-container">
           {
-          activities.map((a, i) => {
+          progress.map((p, i) => {
             return (
               <span key={i}>
-                <div  className={JSON.stringify(activity) === JSON.stringify(a) ? 'each-content now' : 'each-content grey'}>
+                <div  className={JSON.stringify(activity) === JSON.stringify(p) ? 'each-content now' : 'each-content grey'}>
                   <BsCircleFill />
-                  <p>{a.youtubeLink ? 'Teoria' : 'Exercício'}</p>
+                  <p>{p.type === 'theory' ? 'Teoria' : 'Exercício'}</p>
                 </div>
-                {i !== activities.length - 1 && <div className="bar"></div>}
+                {i !== progress.length - 1 && <div className="bar"></div>}
               </span>
             );
           })
