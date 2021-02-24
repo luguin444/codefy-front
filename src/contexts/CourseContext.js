@@ -39,7 +39,7 @@ export function CourseProvider({ children }) {
               type: 'exercise',
               id: currentExercise.id,
               title: currentExercise.title,
-              done: currentExercise.exerciseUsers.length > 0 ? true : false,
+              done: currentExercise.exerciseUsers.length > 0,
               chapterId: currentChapter.id,
               chapterName: currentChapter.name,
               topicId: currentTopic.id,
