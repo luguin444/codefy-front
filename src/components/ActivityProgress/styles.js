@@ -5,8 +5,9 @@ const StyledActivityProgress = styled.section`
     color: #fff;
     display: flex;
     justify-content: center;
-    padding: 5.813em 0 2em 0;
-    border-bottom: 1px solid #717171;
+    padding: 4.813em 0 1em 0;
+    background: #202020;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.15);
 
     .progress-container{
         display: flex;
@@ -43,6 +44,9 @@ const StyledActivityProgress = styled.section`
 
         span{
             display: flex;
+            svg{
+                cursor: pointer;
+            }
         }
     }
 `;

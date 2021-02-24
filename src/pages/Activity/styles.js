@@ -10,7 +10,7 @@ const StyledActivity = styled.div`
     align-items: center;
     padding-bottom: 30px;
     .next-container{
-        width: 60vw;
+        width: 645px;
         margin: 1em 0 0 0;
         display: flex;
         justify-content: space-between;

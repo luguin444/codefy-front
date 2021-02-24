@@ -6,7 +6,6 @@ const StyledActivityContent = styled.section`
     justify-content: center;
     margin-top: 2.5em;
     react-player{
-        width: 60vw;
         height: 35vw;
     }
 
