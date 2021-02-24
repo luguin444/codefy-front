@@ -1,18 +1,33 @@
 import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import Avatar from 'react-avatar';
 import StyledHeader from './styles';
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
+import axios from 'axios';
 
 export default function Header(){
+  const history = useHistory();
   const [dropDownisClosed, setDropDownisClosed] = useState(true);
   const currentRoute = useLocation();
   const name = localStorage.getItem('name');
+  const token = localStorage.getItem('token');
   
-
   if (currentRoute.pathname === '/' || currentRoute.pathname.includes('/courses')) {
     return null;
+  }
+
+  function signOut() {
+    console.log('entrei');
+    axios.post(`${process.env.API_BASE_URL}/clients/logout`, {}, { headers: { 'X-Access-Token': token } })
+    .then(() => {
+        localStorage.removeItem('token');
+        localStorage.removeItem('name');
+        history.push('/');
+    })
+    .catch(() => {
+        alert('Erro ao efetuar Sign out');
+    });
   }
 
   return (
@@ -37,7 +52,7 @@ export default function Header(){
             <>
               <ul className="dropDown">
                 <li> Perfil </li>
-                <li> Sair </li>
+                <li onClick={() => signOut()}> Sair </li>
               </ul>
               <IoIosArrowUp className="icon" onClick={() => setDropDownisClosed(!dropDownisClosed)}/>
             </>
