@@ -31,8 +31,10 @@ export default function Activity(){
   }, [courseId, chapterId, topicId, activityType, activityId]);
 
   useEffect(() => {
-    if (activities) getActivity();
-    if (activities) getProgress();
+    if (activities){
+      getActivity();
+      getProgress();
+    }
   }, [activities]);
 
   function getActivity(){
