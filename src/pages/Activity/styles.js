@@ -10,7 +10,7 @@ const StyledActivity = styled.div`
     align-items: center;
     padding-bottom: 30px;
     .next-container{
-        width: 60vw;
+        width: 645px;
         margin: 1em 0 0 0;
         display: flex;
         justify-content: space-between;
@@ -26,6 +26,15 @@ const StyledActivity = styled.div`
                 border: 1px solid #9D9D9D;
                 border-radius: 2px;
                 cursor: pointer;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .check {
+                color: #76DF93;
+            }
+            .checked{
+                border: 1px solid  #76DF93;
             }
             p{
                 margin: 0 0 0 0.5em;

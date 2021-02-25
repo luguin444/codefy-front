@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
+import { BsCheck } from 'react-icons/bs';
 import ActivityContent from '../../components/ActivityContent';
 import ActivityHeader from '../../components/ActivityHeader';
 import ActivityProgress from '../../components/ActivityProgress';
@@ -9,120 +10,109 @@ import StyledActivity from './styles';
 
 export default function Activity(){
   const { courseId, chapterId, topicId, activityType, activityId } = useParams();
-  const { courseContext, setCourseContext } = useContext(CourseContext);
-  const [chapter, setChapter] = useState(null);
-  const [topic, setTopic] = useState(null);
-  const [theory, setTheory] = useState(null);
-  const [exercise, setExercise] = useState(null);
+  const { courseContext, setCourseContext, activities, setActivities } = useContext(CourseContext);
+  const [activity, setActivity] = useState(null);
+  const [progress, setProgress] = useState(null);
+  const [end, setEnd] = useState(false);
+  const [done, setDone] = useState(false);
   const history = useHistory();
   const token = localStorage.getItem('token');
 
   useEffect(() => {
     if (!courseContext || courseContext.id !== parseInt(courseId)) {
-      axios.get(`${process.env.API_BASE_URL}/clients/courses/${courseId}`, { headers: { 'X-Access-Token': token } })
+      axios.get(`${process.env.API_BASE_URL}/clients/courses/${courseId}/activities`, { headers: { 'X-Access-Token': token } })
       .then(resp => {
         setCourseContext(resp.data);
-        const chapterNeeded = resp.data.chapters.find(c => c.id === parseInt(chapterId));
-        setChapter(chapterNeeded);
-        const topicNeeded = chapterNeeded.topics.find(t => t.id === parseInt(topicId));
-        setTopic(topicNeeded);
-        if (activityType === 'theory'){
-          const activityNeeded = topicNeeded.theories.find(a => a.id === parseInt(activityId));
-          setTheory(activityNeeded);
-        } else {
-          const activityNeeded = topicNeeded.exercises.find(a => a.id === parseInt(activityId));
-          setExercise(activityNeeded);
-        }
       });
     } else {
-      const chapterNeeded = courseContext.chapters.find(c => c.id === parseInt(chapterId));
-      setChapter(chapterNeeded);
-      const topicNeeded = chapterNeeded.topics.find(t => t.id === parseInt(topicId));
-      setTopic(topicNeeded);
-      if (activityType === 'theory'){
-        const activityNeeded = topicNeeded.theories.find(a => a.id === parseInt(activityId));
-        setTheory(activityNeeded);
-      } else {
-        const activityNeeded = topicNeeded.exercises.find(a => a.id === parseInt(activityId));
-        setExercise(activityNeeded);
-      }
+      getActivity();
+      getProgress();
     }
   }, [courseId, chapterId, topicId, activityType, activityId]);
 
-  function nextUrl(course, chapter, topic, type, activity){
-    const url = `/courses/${course}/chapter/${chapter}/topic/${topic}/${type}/${activity}`;
-    return url;
+  useEffect(() => {
+    if (activities){
+      getActivity();
+      getProgress();
+    }
+  }, [activities]);
+
+  function getActivity(){
+    const currentActivity = activities.find(a => a.type === activityType && a.id === parseInt(activityId));
+    setActivity(currentActivity);
+    if (currentActivity.done){
+      setDone(true);
+    } else {
+      setDone(false);
+    }
+  }
+
+  function getProgress(){
+    const topicActivities = activities.filter(a => a.topicId === parseInt(topicId));
+    setProgress(topicActivities);
   }
 
   function handleActivity(){
-    if (activityType === 'theory'){
-      const theoryIds = topic.theories.map(t => t.id);
-      const currentTheory = theoryIds.indexOf(theory.id);
-      if (currentTheory !== theoryIds.length - 1){
-        const nextActivityId = topic.theories[currentTheory + 1].id;
-        history.push(nextUrl(courseId, chapterId, topicId, 'theory', nextActivityId));
-      } else {
-        const nextActivityId = topic.exercises[0].id;
-        history.push(nextUrl(courseId, chapterId, topicId, 'exercise', nextActivityId));
+    if (done){
+      axios.post(`${process.env.API_BASE_URL}/clients/activities/${activityType}/${activityId}`, {}, { headers: { 'X-Access-Token': token } })
+      .then(() => {
+        const newActivities = activities;
+        const index = newActivities.findIndex(n => n.type === activityType && n.id === parseInt(activityId));
+        newActivities[index].done = true;
+        setActivities(newActivities);
+      }).catch(() => alert('erro'));
+    }
+    if (end){
+      history.push('/home');
+    } else {
+      const activityIndex = activities.findIndex(a => a.type === activity.type && a.id === activity.id);
+      if (activityIndex === activities.length - 2){
+      setEnd(true);
       }
-    } else if (activityType === 'exercise'){
-      const exerciseIds = topic.exercises.map(e => e.id);
-      const currentExercise = exerciseIds.indexOf(exercise.id);
-      const topicsIds = chapter.topics.map(t => t.id);
-      const currentTopic = topicsIds.indexOf(topic.id);
-      const chaptersIds = courseContext.chapters.map(c => c.id);
-      const currentChapter = chaptersIds.indexOf(chapter.id);
-      if (currentExercise !== exerciseIds.length - 1){
-        const nextActivityId = topic.exercises[currentExercise + 1].id;
-        history.push(nextUrl(courseId, chapterId, topicId, 'exercise', nextActivityId));
-      } else if (currentTopic !== chapter.topics.length - 1){
-        const nextTopicId = chapter.topics[currentTopic + 1].id;
-        const nextActivityId = chapter.topics[currentTopic + 1].theories[0].id;
-        history.push(nextUrl(courseId, chapterId, nextTopicId, 'theory', nextActivityId));
-      } else if (currentChapter !== courseContext.chapters.length - 1 && courseContext.chapters[currentChapter + 1].topics[0].theories.length !== 0){
-        const nextChapterId = courseContext.chapters[currentChapter + 1].id;
-        const nextTopicId = courseContext.chapters[currentChapter + 1].topics[0].id;
-        const nextActivityId = courseContext.chapters[currentChapter + 1].topics[0].theories[0].id;
-        history.push(nextUrl(courseId, nextChapterId, nextTopicId, 'theory', nextActivityId));
-      } else {
-        history.push('/home');
-      }
+      history.push(`/course/${courseId}/chapter/${activities[activityIndex + 1].chapterId}/topic/${activities[activityIndex + 1].topicId}/${activities[activityIndex + 1].type}/${activities[activityIndex + 1].id}`);
     }
   }
   return (
     <StyledActivity>
       {
-        chapter && topic && 
+        activity &&
           <ActivityHeader 
-          chapter={chapter.name} 
-          topic={topic.name}
+          chapter={activity.chapterName} 
+          topic={activity.topicName}
           chapters={courseContext.chapters} 
           />
       }
       
       {
-        topic && (theory || exercise) &&
+        progress &&
         <ActivityProgress 
-        theories={topic.theories} 
-        exercises={topic.exercises}
-        activity={activityType === 'theory' ? theory : exercise} 
+        progress={progress}
+        activity={activity} 
         />
       }
       
       {
-        (theory || exercise) &&
+        activity &&
         <ActivityContent 
-        activity={activityType === 'theory' ? theory : exercise}
-        activityType={activityType} 
+        activity={activity}
         />
       }
       
       <form className="next-container">
-        <div className="checkbox-container">
-          <div className="checkbox"></div> 
-          <p>Marcar como concluído</p>
+        <div className="checkbox-container" 
+        onClick={() => setDone(!done)}
+        onKeyPress={() => setDone(!done)}
+        aria-hidden="true"
+        >
+          <div className={done ? 'checkbox checked' : 'checkbox'}>
+            {
+              done &&
+              <BsCheck className="check" />
+            }
+          </div> 
+          <p className={done ? 'check' : ''}>Marcar como concluído</p>
         </div>
-        <button type='button' onClick={() => handleActivity()}>Avançar {'>>'}</button>
+        <button type='button' onClick={() => handleActivity()}>{!end ? 'Avançar' : 'Finalizar'}{'>>'}</button>
       </form>
     </StyledActivity>
     );

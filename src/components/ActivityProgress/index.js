@@ -1,28 +1,40 @@
 import React from 'react';
+import { useHistory, useParams } from 'react-router-dom';
 import { BsCircleFill } from 'react-icons/bs';
 import StyledActivitieProgress from './styles';
 
-export default function ActivitieProgress({ theories, exercises, activity }){
-  const activities = [...theories, ...exercises];
+export default function ActivitieProgress({ progress , activity }){
+  const { courseId } = useParams();
+  const history = useHistory();
 
-    return (
-      <StyledActivitieProgress>
-        
-        <div className="progress-container">
-          {
-          activities.map((a, i) => {
+  function handleClick(chapterId, topicId, activityType, activityId){
+    history.push(`/course/${courseId}/chapter/${chapterId}/topic/${topicId}/${activityType}/${activityId}`);
+  }
+
+  return (
+    <StyledActivitieProgress> 
+      <div className="progress-container">
+        {
+          progress.map((p, i) => {
             return (
               <span key={i}>
-                <div  className={JSON.stringify(activity) === JSON.stringify(a) ? 'each-content now' : 'each-content grey'}>
-                  <BsCircleFill />
-                  <p>{a.youtubeLink ? 'Teoria' : 'Exercício'}</p>
+                <div  
+                className={
+                JSON.stringify(activity) === JSON.stringify(p) ? 
+                'each-content now' :
+                p.done ? 
+                'each-content done' :
+                'each-content grey'
+                }>
+                  <BsCircleFill onClick={() => handleClick(p.chapterId, p.topicId, p.type, p.id)} />
+                  <p>{p.type === 'theory' ? 'Teoria' : 'Exercício'}</p>
                 </div>
-                {i !== activities.length - 1 && <div className="bar"></div>}
+                {i !== progress.length - 1 && <div className={p.done ? 'bar-done' : 'bar'}></div>}
               </span>
             );
           })
         }
-        </div>
-      </StyledActivitieProgress>
+      </div>
+    </StyledActivitieProgress>
     );
 }
