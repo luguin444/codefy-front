@@ -8,7 +8,9 @@ export default function Header(){
   const currentRoute = useLocation();
   const name = localStorage.getItem('name');
 
-  if (currentRoute.pathname === '/' || currentRoute.pathname.includes('/courses')) {
+  const isRecoverPasswordPages = currentRoute.pathname.includes('/recover-password');
+
+  if (currentRoute.pathname === '/' || currentRoute.pathname.includes('/courses') || isRecoverPasswordPages) {
     return null;
   }
 
