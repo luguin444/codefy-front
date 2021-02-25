@@ -2,12 +2,13 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import Form from '../Form';
 import Button from '../Button';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 
 export default function RecoverPasswordForm () {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
-    const {token} = useParams();
+    const { token } = useParams();
+    const history = useHistory();
     const [loading, setLoading] = useState(false);
 
     function sendRequestNewPassword(event) {
@@ -16,6 +17,7 @@ export default function RecoverPasswordForm () {
         const bodyRequest = { password, confirmPassword, token };
         axios.post(`${process.env.API_BASE_URL}/clients/new-password`, bodyRequest).then(() => {
             setLoading(false);
+            history.push('/');
         }).catch((err) => {
             console.log(err);
             setLoading(false);
