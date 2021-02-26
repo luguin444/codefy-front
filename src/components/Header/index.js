@@ -13,7 +13,7 @@ export default function Header(){
   const name = localStorage.getItem('name');
   const token = localStorage.getItem('token');
   
-  if (currentRoute.pathname === '/' || currentRoute.pathname.includes('/courses')) {
+  if (currentRoute.pathname === '/' || currentRoute.pathname.includes('theory') || currentRoute.pathname.includes('exercise') || currentRoute.pathname.includes('/recover-password') || currentRoute.pathname.includes('/courses')) {
     return null;
   }
 
