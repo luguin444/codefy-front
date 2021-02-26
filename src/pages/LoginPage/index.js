@@ -14,7 +14,7 @@ export default function LoginPage () {
 
     return (
       <Container>
-        <img src='assets/images/logo.png' alt="" />
+        <img src='/assets/images/logo.png' alt="" />
         <h2> learn. practice. code.</h2>
         <div className='loginBox'>
           {registered ?
