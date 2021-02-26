@@ -19,7 +19,7 @@ const StyledQuestion = styled.article`
 
     h1 {
         font-weight: bold;
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
 
     & > div {

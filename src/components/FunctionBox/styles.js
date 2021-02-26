@@ -5,8 +5,8 @@ const StyledFunctionBox = styled.div`
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    flex-grow: 1;
     color: #FFFFFF;
+    height: 55%;
 
     header {
         display: flex;
@@ -30,6 +30,7 @@ const StyledFunctionBox = styled.div`
             font-size: 0.7rem;
             display: flex;
             justify-content: space-between;
+            cursor: pointer;
         }
     }
 

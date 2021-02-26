@@ -21,7 +21,7 @@ export default function FunctionBox() {
       </header>
       <div>
         <Editor
-            height="50%"
+            height="100%"
             theme="vs-dark"
             loading="Loading..."
             defaultLanguage="javascript"
