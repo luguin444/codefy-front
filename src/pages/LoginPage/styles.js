@@ -4,7 +4,7 @@ const Container = styled.div`
 
   width: 100vw;
   min-height: 100vh;
-  background: url('assets/images/background_login.png');
+  background: url('/assets/images/background_login.png');
   background-size: cover;
   display: flex;
   flex-direction: column;
