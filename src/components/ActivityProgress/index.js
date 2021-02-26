@@ -3,11 +3,11 @@ import { useHistory, useParams } from 'react-router-dom';
 import { BsCircleFill } from 'react-icons/bs';
 import StyledActivitieProgress from './styles';
 
-export default function ActivitieProgress({ progress , activity }){
+export default function ActivitieProgress({ progress , activity }) {
   const { courseId } = useParams();
   const history = useHistory();
 
-  function handleClick(chapterId, topicId, activityType, activityId){
+  function handleClick(chapterId, topicId, activityType, activityId) {
     history.push(`/course/${courseId}/chapter/${chapterId}/topic/${topicId}/${activityType}/${activityId}`);
   }
 
@@ -36,5 +36,5 @@ export default function ActivitieProgress({ progress , activity }){
         }
       </div>
     </StyledActivitieProgress>
-    );
+  );
 }
