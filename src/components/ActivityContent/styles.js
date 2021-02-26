@@ -3,14 +3,14 @@ import styled from 'styled-components';
 const StyledActivityContent = styled.section`
     width: 100%;
     display: flex;
-    justify-content: center;
-    margin-top: 2.5em;
-    react-player{
-        height: 35vw;
-    }
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    flex-grow: 1;
 
-    h1{
-        color: #fff;
+    .react-player {
+        margin-top: 2.5em;
+        height: 35vw;
     }
 `;
 
