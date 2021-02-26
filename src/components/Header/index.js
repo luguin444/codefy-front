@@ -18,7 +18,6 @@ export default function Header(){
   }
 
   function signOut() {
-    console.log('entrei');
     axios.post(`${process.env.API_BASE_URL}/clients/logout`, {}, { headers: { 'X-Access-Token': token } })
     .then(() => {
         localStorage.removeItem('token');
