@@ -5,10 +5,10 @@ import Avatar from 'react-avatar';
 import StyledHeader from './styles';
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 import axios from 'axios';
-import useOutsideClick from '../../hooks/useOutsideClick';
+// import useOutsideClick from '../../hooks/useOutsideClick';
+import { useDetectClickOutside } from 'react-detect-click-outside';
 
 export default function Header(){
-  const ref = useRef();
   const history = useHistory();
   const [dropDownisClosed, setDropDownisClosed] = useState(true);
   const currentRoute = useLocation();
@@ -19,9 +19,11 @@ export default function Header(){
     return null;
   }
 
-  useOutsideClick(ref, () => {
-    if (!dropDownisClosed) setDropDownisClosed(true);
-  });
+  const ref = useDetectClickOutside({ onTriggered: () => setDropDownisClosed(true) });
+
+  // useOutsideClick(ref, () => {
+  //   if (!dropDownisClosed) setDropDownisClosed(true);
+  // });
 
   function changePage() {
     setDropDownisClosed(true);
@@ -56,17 +58,17 @@ export default function Header(){
         </li>
         <li className="courses">Cursos</li>
       </ul>
-      <div className='user' ref={ref} >
+      <div className='user' >
         {
           dropDownisClosed ?  
             <IoIosArrowDown className="icon" onClick={() => setDropDownisClosed(!dropDownisClosed)}/> : 
-            <>
+            <div ref={ref} >
               <ul className="dropDown" >
                 <li onClick={() => changePage()}> Perfil </li>
                 <li onClick={() => signOut()}> Sair </li>
               </ul>
               <IoIosArrowUp className="icon" onClick={() => setDropDownisClosed(!dropDownisClosed)}/>
-            </>
+            </div>
         }
         <Avatar name={name} round={true} size="4em" maxInitials={2}/>
       </div>

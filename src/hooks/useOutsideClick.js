@@ -6,6 +6,7 @@ const useOutsideClick = (ref, callback) => {
       callback();
     }
   };
+  
   return () => {
     document.removeEventListener('click', handleClick);
   };
