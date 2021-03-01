@@ -1,4 +1,4 @@
-import React, { useState, useRef, Children } from 'react';
+import React, { useRef, useState  } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import Avatar from 'react-avatar';
@@ -10,12 +10,12 @@ import useOutsideClick from '../../hooks/useOutsideClick';
 export default function Header(){
   const ref = useRef();
   const history = useHistory();
-  const [dropDownisClosed, setDropDownisClosed] = useState(false);
+  const [dropDownisClosed, setDropDownisClosed] = useState(true);
   const currentRoute = useLocation();
   const name = localStorage.getItem('name');
   const token = localStorage.getItem('token');
   
-  if (currentRoute.pathname === '/' || currentRoute.pathname.includes('theory') || currentRoute.pathname.includes('exercise') || currentRoute.pathname.includes('/recover-password') || currentRoute.pathname.includes('/courses')) {
+  if (currentRoute.pathname === '/' || currentRoute.pathname.includes('theory') || currentRoute.pathname.includes('exercise') || currentRoute.pathname.includes('/recover-password') || currentRoute.pathname.includes('topic')) {
     return null;
   }
 
