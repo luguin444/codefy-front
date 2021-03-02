@@ -23,6 +23,7 @@ export default function LoginForm () {
             setUser(data);
             localStorage.setItem('token', data.token);
             localStorage.setItem('name', data.name);
+            localStorage.setItem('email', data.email);
             history.push('/home');
         }).catch((err) => {
             console.log(err);
