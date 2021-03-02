@@ -1,38 +1,89 @@
-import React from 'react';
-// import axios from 'axios';
-// import CourseContext from '../../contexts/CourseContext';
-// import { useParams } from 'react-router-dom';
+import React, { useContext } from 'react';
+import CourseContext from '../../contexts/CourseContext';
+import { useParams } from 'react-router-dom';
 import { StyledExerciseContainer, StyledQuestion, StyledExercise } from './styles';
 import ActivityForm from '../ActivityForm';
 import FunctionBox from '../FunctionBox';
 import ConsoleBox from '../ConsoleBox';
 
 export default function Exercises() {
-//   const { activities } = useContext(CourseContext);
-//   const { activityId } = useParams();
-//   const currentExercise = activities.find(a => a.id === activityId);
-  const currentExercise = {
-    id: 1,
-    title: 'Exercício 1',
+  const { activities, isSolution } = useContext(CourseContext);
+  const { activityId } = useParams();
+  const currentExercise = activities.find(a => a.id === parseInt(activityId));
+  const testStatement = `
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut optio architecto ab autem cum quisquam nisi nemo et minus incidunt, esse, magni quia cupiditate numquam eum voluptas eligendi laudantium inventore. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magnam tenetur eos vitae qui esse possimus molestias voluptatum praesentium aliquid voluptates perferendis ea placeat error, quae earum repudiandae velit aliquam! Doloribus. <br /> <br /> <br /> Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum maxime, reprehenderit dolores sunt consequuntur quasi eum vitae soluta explicabo, quo maiores ullam tempora a iure nam. Laborum magni minus odit. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsam voluptatem iure, cumque architecto saepe consequatur quos. Quam expedita vitae nulla, eius accusantium, porro, quia neque ratione atque aperiam nostrum at. <br /> <br /> <b>Exemplo:</b> <br /> <br /> Quando enviado ... retorna ...
+    </p>
+  `;
+
+  const testBaseCode = `
+function minhaFuncao() {
+  //Insira seu código aqui
+}
+  `;
+
+  const testSolutionCode = `
+function nossaFuncao() {
+  //Aqui estará o código com a solução
+}
+  `;
+
+  const testExercise = {
+    id: 'Teste',
+    testStatement,
+    testBaseCode,
+    testSolutionCode,
+    testCode: 'Em breve código de teste'
   };
 
-//   useEffect(() => {
-//     axios.get(`${process.env.API_BASE_URL}/clients/activities/exercise/${currentExercise.id}`);
-//   },[]);
-
   return (
-    <StyledExerciseContainer>
-      <StyledQuestion>
-        <h1>{currentExercise.title}</h1>
-        <div>
-          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem impedit dolores corporis explicabo quasi quaerat, tempora esse reiciendis saepe blanditiis necessitatibus recusandae ipsum nisi sed facere minus nam atque quo! Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque tenetur perferendis aliquid? Nesciunt cumque nisi sit quisquam, doloremque sapiente praesentium non odio, recusandae nemo magnam, earum expedita neque nihil soluta? <br /> <br /> <br /> Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, voluptates. Ipsum voluptatibus ratione consectetur voluptate nemo omnis amet, sit eaque, magni vero tempora sequi reprehenderit. Soluta quaerat explicabo voluptates perspiciatis. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illo rerum iste error aut inventore facere ex, quasi aliquid laudantium et delectus voluptates debitis dolorem deleniti non, omnis, accusantium fugit vel.<br /> <br />Exemplo: <br /> <br /> Quando enviado ... retorna ...</p>
-        </div>
-        <ActivityForm />
-      </StyledQuestion>
-      <StyledExercise>
-        <FunctionBox />
-        <ConsoleBox />
-      </StyledExercise>
-    </StyledExerciseContainer>
+    currentExercise.statement !== undefined 
+      ? (
+        <StyledExerciseContainer>
+          <StyledQuestion>
+            <h1>Exercício {currentExercise.id}</h1>
+            <div>
+              {currentExercise.statement}
+            </div>
+            <ActivityForm />
+          </StyledQuestion>
+          <StyledExercise>
+            { isSolution
+              ? <FunctionBox currentExercise={currentExercise}/>
+              : (
+                <>
+                  <FunctionBox currentExercise={currentExercise}/>
+                  <ConsoleBox currentExercise={currentExercise}/>
+                </>
+              )
+            }
+            
+          </StyledExercise>
+        </StyledExerciseContainer>
+      )
+      : (
+        <StyledExerciseContainer>
+          <StyledQuestion>
+            <h1>Exercício {testExercise.id}</h1>
+            <div>
+              {testExercise.testStatement}
+            </div>
+            <ActivityForm />
+          </StyledQuestion>
+          <StyledExercise>
+            { isSolution
+              ? <FunctionBox currentExercise={currentExercise} testExercise={testExercise}/>
+              : (
+                <>
+                  <FunctionBox currentExercise={currentExercise} testExercise={testExercise}/>
+                  <ConsoleBox currentExercise={currentExercise} testExercise={testExercise}/>
+                </>
+              )
+            }
+            
+          </StyledExercise>
+        </StyledExerciseContainer>
+      )
+    
   );
 }

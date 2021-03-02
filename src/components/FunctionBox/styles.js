@@ -6,7 +6,8 @@ const StyledFunctionBox = styled.div`
     justify-content: space-between;
     align-items: center;
     color: #FFFFFF;
-    height: 55%;
+    height: ${({ isSolution }) => isSolution ? '100%' : '55%'};
+    overflow-y: hidden;
 
     header {
         display: flex;
@@ -21,16 +22,23 @@ const StyledFunctionBox = styled.div`
             margin-right: 10px;
         }
 
-        & > div {
+        .advancement {
+            position: relative;
             height: 100%;
             background: rgba(150, 150, 150, 0.5);
             border-radius: 0.5em;
-            padding: 0.36em 1.6em;
+            outline: 0;
+            border: 0;
+            padding: 0.36em 2em 0.36em 1.6em;
             color: white;
-            font-size: 0.7rem;
-            display: flex;
-            justify-content: space-between;
             cursor: pointer;
+        }
+
+        .function-icon {
+            position: absolute;
+            top: 0.38em;
+            right: 1.3em;
+            font-size: 0.78rem;
         }
     }
 
@@ -40,5 +48,4 @@ const StyledFunctionBox = styled.div`
         width: 100%;
     }
 `;
-
 export default StyledFunctionBox;

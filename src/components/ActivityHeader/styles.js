@@ -49,7 +49,7 @@ const StyledActivityHeader = styled.nav`
         width: 378px;
         height: 400px;
         overflow-y: scroll;
-        position absolute;
+        position: absolute;
         top: calc(100% + 16px);
         background: #303030;
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
