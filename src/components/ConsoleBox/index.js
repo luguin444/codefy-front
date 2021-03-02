@@ -1,10 +1,11 @@
 import React from 'react';
 import StyledConsoleBox from './styles';
 import { FiChevronsRight } from 'react-icons/fi';
+import mochaAsPromised from '@bootcamp-ra/mocha-as-promised';
 
 export default function ConsoleBox() {
   return (
-    <StyledConsoleBox>
+    <StyledConsoleBox onout>
       <header>
         <p>Console</p>
         <div>
