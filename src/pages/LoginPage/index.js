@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import LoginForm from '../../components/LoginForm.js';
 import SignUpForm from '../../components/SignUpForm/index.js';
 import Container from './styles';
 
 export default function LoginPage () {
+  const history = useHistory();
     const [registered, setRegistered] = useState(true);
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -12,7 +14,7 @@ export default function LoginPage () {
 
     return (
       <Container>
-        <img src='assets/images/logo.png' alt="" />
+        <img src='/assets/images/logo.png' alt="" />
         <h2> learn. practice. code.</h2>
         <div className='loginBox'>
           {registered ?
@@ -37,7 +39,7 @@ export default function LoginPage () {
                         'Já tem uma conta ? Faça login' 
                     }
           </button>
-          <button className="footer">Esqueceu sua senha ?</button>
+          <button className="footer" onClick={() => history.push('/recover-password')}>Esqueceu sua senha ?</button>
         </div>
       </Container>
     );
