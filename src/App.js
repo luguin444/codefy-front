@@ -10,6 +10,7 @@ import Home from './pages/Home';
 import Course from './pages/Course';
 import Activity from './pages/Activity';
 import { CourseProvider } from './contexts/CourseContext';
+import ProfilePage from './pages/ProfilePage';
 
 export default function App() {
     return (
@@ -22,6 +23,7 @@ export default function App() {
               <Route path='/recover-password' component={recoverPasswordPage} exact/>
               <Route path='/recover-password/:token' component={newPasswordPage} exact/>
               <Route path='/home' component={Home} exact />
+              <Route path='/perfil' component={ProfilePage} exact />
               <Route path='/course/:courseId' component={Course} exact/>
               <Route path='/course/:courseId/chapter/:chapterId/topic/:topicId/:activityType/:activityId' component={Activity} exact />
             </Switch>

@@ -5,6 +5,7 @@ import { IoIosArrowBack, IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 import { FaCircle } from 'react-icons/fa';
 import { useHistory, useParams } from 'react-router-dom';
 import StyledActivityHeader from './styles';
+import UseOutsideClick from '../../hooks/useOutsideClick';
 
 export default function ActivityHeader({ chapter, topic, chapters }){
   const history = useHistory();
@@ -13,6 +14,11 @@ export default function ActivityHeader({ chapter, topic, chapters }){
 
   function handleClick(chapterId, topicId, activityType, activityId){
     history.push(`/course/${courseId}/chapter/${chapterId}/topic/${topicId}/${activityType}/${activityId}`);
+  }
+
+  function changeActivitie(chapterId, topicId, theoryId) {
+    setOpen(false);
+    handleClick(chapterId, topicId, 'theory', theoryId);
   }
 
   return (
@@ -27,32 +33,33 @@ export default function ActivityHeader({ chapter, topic, chapters }){
         }
         {
           open &&
-          <ul className="navigation">
-            {
-            chapters.map(c => {
-              return (
-                <li key={c.id}>
-                  <p className="chapter">{c.name}</p>
-                  {
-                    c.topics.map(t => {
-                      return (
-                        <div className="topic-container" 
-                        key={t.id} 
-                        onClick={() => handleClick(c.id, t.id, 'theory', t.theory.id)}
-                        onKeyPress={() => handleClick(c.id, t.id, 'theory', t.theory.id)}
-                        >
-                          <FaCircle />
-                          <p className="topic" >{t.name}</p>
-                        </div>
-                      );
-                    })
-                  }
-                </li>
-              
-              );
-            })
-          }
-          </ul>
+          <UseOutsideClick onClickOutside={() => setOpen(false)}>
+            <ul className="navigation">
+              {
+                chapters.map(c => {
+                  return (
+                    <li key={c.id}>
+                      <p className="chapter">{c.name}</p>
+                      {
+                        c.topics.map(t => {
+                          return (
+                            <div className="topic-container" 
+                              key={t.id} 
+                              onClick={() => changeActivitie(c.id, t.id, t.theory.id)}
+                              onKeyPress={() => changeActivitie(c.id, t.id, t.theory.id)}
+                            >
+                              <FaCircle />
+                              <p className="topic" >{t.name}</p>
+                            </div>
+                          );
+                        })
+                      }
+                    </li>           
+                  );
+                })
+              }
+            </ul>
+          </UseOutsideClick>
         }
       </div>
     </StyledActivityHeader>
