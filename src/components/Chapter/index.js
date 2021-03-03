@@ -4,10 +4,16 @@ import { AiFillCheckCircle } from 'react-icons/ai';
 import { FaCircle } from 'react-icons/fa';
 
 import { StyledChapter, Details } from './styles';
+import { useHistory } from 'react-router-dom';
 
 export default function Chapter (props) {
     const [isOpen, setIsOpen] = useState(false);
-    const { text , content, topics } = props;
+    const { text , content, topics, courseId, chapterId } = props;
+    const history = useHistory();
+
+    function handleClick(topicId, theoryId){
+      history.push(`/course/${courseId}/chapter/${chapterId}/topic/${topicId}/theory/${theoryId}`);
+    }
 
     return (
       <>
@@ -23,13 +29,13 @@ export default function Chapter (props) {
         <Details isOpen={isOpen}>
           {
             topics && topics.map(t => 
-              <div key={t.id} className="topic-container">
+              <button key={t.id} className="topic-container" onClick={() => handleClick(t.id, t.theoryId)}>
                 <span>
                   <div>{t.done ? <AiFillCheckCircle className="check" /> : <FaCircle />}</div>
                   <li>{t.name}</li>
                 </span>
                 <p>Visualizar</p>
-              </div>)
+              </button>)
           }
         </Details>
       </>

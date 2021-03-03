@@ -79,7 +79,13 @@ export default function Course() {
           <ChaptersContainer>
             {
               course.chapters && 
-              course.chapters.map((c) => <Chapter text={c.name} content={`${c.theoryCount} aulas  •  ${c.exerciseCount} exercícios`} topics={c.topics} key={c.id} />)
+              course.chapters.map((c) => <Chapter 
+              text={c.name} 
+              content={`${c.theoryCount} aulas  •  ${c.exerciseCount} exercícios`} 
+              topics={c.topics} 
+              courseId={course.id}
+              chapterId={c.id}
+              key={c.id} />)
             }
           </ChaptersContainer>
         </Accordeon>

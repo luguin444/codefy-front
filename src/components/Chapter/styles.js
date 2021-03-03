@@ -47,17 +47,19 @@ const StyledChapter =  styled.article`
 const Details = styled.ul`
     display: ${(props) => props.isOpen ? 'block' : 'none'}; 
     padding: 2em;
-    color: #656565;
     background: #F8F8F8;
     
     .topic-container{
+        width: 100%;
         display: flex;
         justify-content: space-between;
         align-items: center;
         margin: 0 0 1.5em 0;
-
-        p{
-            cursor: pointer;
+        color: #656565;
+        font-family: 'Roboto', sans-serif;
+        font-size: 1.1em;
+        .view{
+            color: #656565;
         }
     }
 
