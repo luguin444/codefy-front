@@ -14,7 +14,6 @@ export default function SuggestedCourses(){
         setSuggestedCourses(response.data);
       }).catch((error) => {
         if (error.response.status === 403){
-          console.log(history);
           history.push('/');
         } else {
           alert('erro');

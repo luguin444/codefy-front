@@ -22,14 +22,13 @@ export default function SignUpForm (props) {
         event.preventDefault();
         setLoading(true);
         const bodyRequest = { name, email, password, confirmPassword };
-        axios.post(`${process.env.API_BASE_URL}/clients/signup`, bodyRequest).then(({ data }) => {
+        axios.post(`${process.env.API_BASE_URL}/clients/signup`, bodyRequest).then(() => {
             setLoading(false);
             setRegistered(true);
             setEmail('');
             setPassword('');
             setName('');
             setConfirmPassword('');
-            console.log(data);
         }).catch((err) => {
             if (err.response.data.error === 'Senhas diferentes.') {
                 alert('As senhas não são iguais. Tente novamente');
