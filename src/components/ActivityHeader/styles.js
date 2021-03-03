@@ -8,6 +8,7 @@ const StyledActivityHeader = styled.nav`
     background: #292929;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
     padding: 1em;
+
     .back{
         display: flex;
         justify-content: center;
@@ -49,13 +50,14 @@ const StyledActivityHeader = styled.nav`
         width: 378px;
         height: 400px;
         overflow-y: scroll;
-        position absolute;
+        position: absolute;
         top: calc(100% + 16px);
         background: #303030;
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
         padding: 20px;
         border-bottom-right-radius: 1em;
         border-bottom-left-radius: 1em;
+        z-index: 500;
 
         ::-webkit-scrollbar-track {
             background-color: transparent;

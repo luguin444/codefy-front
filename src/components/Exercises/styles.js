@@ -13,7 +13,7 @@ const StyledQuestion = styled.article`
     align-items: flex-start;
     margin-top: 2.5em;
     padding: 0 1.2em 1.2em 2.2em;
-    width: 45vw;
+    width: 45%;
     color: #FFF;
 
 
@@ -37,7 +37,7 @@ const StyledExercise = styled.article`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 55vw;
+    width: 55%;
 `;
 
 export {

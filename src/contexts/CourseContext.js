@@ -8,6 +8,7 @@ export function CourseProvider({ children }) {
   const [activities, setActivities] = useState(null);
   const [activity, setActivity] = useState(null);
   const [done, setDone] = useState(false);
+  const [isSolution, setIsSolution] = useState(false);
 
   useEffect(() => {
     if (courseContext) {
@@ -63,7 +64,9 @@ export function CourseProvider({ children }) {
         done, 
         setDone,
         activity,
-        setActivity
+        setActivity,
+        isSolution,
+        setIsSolution
       }
     }>
       {children}
