@@ -22,7 +22,7 @@ export default function SignUpForm (props) {
         event.preventDefault();
         setLoading(true);
         const bodyRequest = { name, email, password, confirmPassword };
-        axios.post(`${process.env.API_BASE_URL}/clients/signup`, bodyRequest).then(({ data }) => {
+        axios.post(`${process.env.API_BASE_URL}/clients/signup`, bodyRequest).then(() => {
             setLoading(false);
             setRegistered(true);
             setEmail('');
