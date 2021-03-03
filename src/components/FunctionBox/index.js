@@ -1,31 +1,34 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import StyledFunctionBox from './styles';
 import Editor from '@monaco-editor/react';
 import { HiOutlineLightBulb } from 'react-icons/hi';
+import CourseContext from '../../contexts/CourseContext';
 
-export default function FunctionBox() {
-    const defaultValue = `
-    function minhaFuncao() {
-        // Insira seu código aqui
-    }
-    `;
+export default function FunctionBox({ currentExercise }) {
+  const { baseCode, id } = currentExercise;
+  const { isSolution, setIsSolution } = useContext(CourseContext);
+
+  function stashGivenCode(value) {
+    localStorage.setItem(`code${id}`, value);
+  }
 
   return (
     <StyledFunctionBox>
       <header>
         <p>Seu código</p>
-        <div>
+        <button className='advancement' onClick={() => setIsSolution(!isSolution)}>
           <p>Ver Solução</p>
-          <HiOutlineLightBulb />
-        </div>
+          <HiOutlineLightBulb className='function-icon'/>
+        </button>
       </header>
       <div>
         <Editor
-            height="100%"
-            theme="vs-dark"
-            loading="Loading..."
-            defaultLanguage="javascript"
-            defaultValue={defaultValue}
+          height="100%"
+          theme="vs-dark"
+          loading="Loading..."
+          defaultLanguage="javascript"
+          value={ localStorage.getItem(`code${id}`) || baseCode }
+          onChange={value => stashGivenCode(value)}
         />
       </div>
     </StyledFunctionBox>

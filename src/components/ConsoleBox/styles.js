@@ -21,29 +21,47 @@ const StyledConsoleBox = styled.div`
             margin-right: 10px;
         }
 
-        & > div {
+        .test {
+            position: relative;
             height: 100%;
             background: rgba(150, 150, 150, 0.5);
             border-radius: 0.5em;
-            padding: 0.36em 1.6em;
+            outline: 0;
+            border: 0;
+            padding: 0.36em 2em 0.36em 1.6em;
             color: white;
-            font-size: 0.7rem;
-            display: flex;
-            justify-content: space-between;
             cursor: pointer;
         }
-    }
 
-    & > div {
-        background: #202020;
-        flex-grow: 1;
-        width: 100%;
-        padding: 1.5em 0 0 1.5em;
-
-        & > p {
-            font-size: 0.9em;
+        .function-icon {
+            position: absolute;
+            top: 0.38em;
+            right: 1.3em;
+            font-size: 0.78rem;
         }
     }
 `;
 
-export default StyledConsoleBox;
+const StyledDisplayTests = styled.div`
+    overflow-y: auto;
+    background: #202020;
+    flex-grow: 1;
+    width: 100%;
+    padding: 1.5em 0 0 1.5em;
+
+    & > p {
+        font-size: 0.9em;
+    }
+
+    & > ul {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        overflow-y: auto;
+    }
+`;
+
+export {
+    StyledConsoleBox,
+    StyledDisplayTests
+};
