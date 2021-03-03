@@ -54,6 +54,7 @@ export default function Activity() {
         <ActivityHeader 
         chapter={activity.chapterName} 
         topic={activity.topicName}
+        activities={activities}
         chapters={courseContext.chapters} 
         />
       }
