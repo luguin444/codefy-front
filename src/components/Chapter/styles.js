@@ -75,6 +75,10 @@ const Details = styled.ul`
         color: #CFCFCF;
     }
 
+    .check{
+        color: #76DF93;
+    }
+
     li {
         font-size: 1.2em;
         margin-left: 1.5rem;

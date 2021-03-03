@@ -59,13 +59,13 @@ export default function Course() {
           <p>{course.description}</p>
         </Presentation>
         <CourseStatus>
-          <Progress>
+          <Progress progress={course.progress}>
             <Avatar name={name} round={true} size="4em" maxInitials={2} />
             <div className="progress">
               <p>Você não iniciou esse curso ainda</p>
               <div className="progress-bar">
                 <div className="progress-value">
-                  <p>0%</p>
+                  <p>{course.progress}%</p>
                 </div>
               </div>
             </div>
