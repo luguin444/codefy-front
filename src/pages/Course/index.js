@@ -65,13 +65,13 @@ export default function Course() {
               <p>Você não iniciou esse curso ainda</p>
               <div className="progress-bar">
                 <div className="progress-value">
-                  <p>{course.progress}%</p>
+                  <p>{course.progress ? `${course.progress}` : '0'}%</p>
                 </div>
               </div>
             </div>
           </Progress>
           <CourseButton disabled={loading} onClick={startCourse}>
-            <p>Iniciar curso {'>>'}</p>
+            <p>{course.started ? 'Continuar curso >>' : 'Iniciar curso >>'}</p>
           </CourseButton>
         </CourseStatus>
         <Accordeon>
