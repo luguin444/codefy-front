@@ -41,7 +41,11 @@ export function CourseProvider({ children }) {
             activities.push({
               type: 'exercise',
               id: currentExercise.id,
-              title: currentExercise.title,
+              statement: currentExercise.statement,
+              baseCode: currentExercise.baseCode,
+              testCode: currentExercise.testCode,
+              solutionCode: currentExercise.solutionCode,
+              position: currentExercise.position,
               done: currentExercise.exerciseUsers.length > 0,
               chapterId: currentChapter.id,
               chapterName: currentChapter.name,
@@ -66,7 +70,7 @@ export function CourseProvider({ children }) {
         activity,
         setActivity,
         isSolution,
-        setIsSolution
+        setIsSolution,
       }
     }>
       {children}

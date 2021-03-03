@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import Avatar from 'react-avatar';
 import StyledHeader from './styles';
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 import axios from 'axios';
+import CourseContext from '../../contexts/CourseContext';
 
 export default function Header(){
   const history = useHistory();
+  const { setDone, setActivities, setCourseContext, setActivity } = useContext(CourseContext);
   const [dropDownisClosed, setDropDownisClosed] = useState(true);
   const currentRoute = useLocation();
   const name = localStorage.getItem('name');
@@ -22,6 +24,10 @@ export default function Header(){
     .then(() => {
         localStorage.removeItem('token');
         localStorage.removeItem('name');
+        setDone(false);
+        setActivities(null);
+        setCourseContext(null);
+        setActivity(null);
         setDropDownisClosed(true);
         history.push('/');
     })
@@ -52,7 +58,7 @@ export default function Header(){
             <>
               <ul className="dropDown">
                 <li> Perfil </li>
-                <li onClick={() => signOut()}> Sair </li>
+                <li><button className='signOut' onClick={() => signOut()}> Sair </button></li>
               </ul>
               <IoIosArrowUp className="icon" onClick={() => setDropDownisClosed(!dropDownisClosed)}/>
             </>
