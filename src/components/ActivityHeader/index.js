@@ -6,6 +6,7 @@ import { FaCircle } from 'react-icons/fa';
 import { AiFillCheckCircle } from 'react-icons/ai';
 import { useHistory, useParams } from 'react-router-dom';
 import StyledActivityHeader from './styles';
+import UseOutsideClick from '../../hooks/useOutsideClick';
 
 export default function ActivityHeader({ chapter, topic, activities, chapters }){
   const history = useHistory();
@@ -13,6 +14,7 @@ export default function ActivityHeader({ chapter, topic, activities, chapters })
   const [open, setOpen] = useState(false);
 
   function handleClick(chapterId, topicId, activityType, activityId){
+    setOpen(false);
     history.push(`/course/${courseId}/chapter/${chapterId}/topic/${topicId}/${activityType}/${activityId}`);
   }
 
@@ -33,14 +35,15 @@ export default function ActivityHeader({ chapter, topic, activities, chapters })
         }
         {
           open &&
-          <ul className="navigation">
-            {
-            chapters.map(c => {
-              return (
-                <li key={c.id}>
-                  <p className="chapter">{c.name}</p>
-                  {
-                    c.topics.map(t => {
+          <UseOutsideClick onClickOutside={() => setOpen(false)}>
+            <ul className="navigation">
+              {
+                chapters.map(c => {
+                return (
+                  <li key={c.id}>
+                    <p className="chapter">{c.name}</p>
+                    {
+                      c.topics.map(t => {
                       const doneTopic = checkDoneTopic(t.id, t.exercises.length + 1);
                       return (
                         <div className="topic-container" 
@@ -54,12 +57,12 @@ export default function ActivityHeader({ chapter, topic, activities, chapters })
                       );
                     })
                   }
-                </li>
-              
-              );
-            })
-          }
-          </ul>
+                  </li>
+                );
+              })
+            }
+            </ul>
+          </UseOutsideClick>
         }
       </div>
     </StyledActivityHeader>

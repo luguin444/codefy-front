@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+// eslint-disable-next-line jsx-a11y/click-events-have-key-events
+import React, { useState  } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import Avatar from 'react-avatar';
 import StyledHeader from './styles';
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 import axios from 'axios';
+import UseOutsideClick from '../../hooks/useOutsideClick';
 
 export default function Header(){
   const history = useHistory();
@@ -13,8 +15,13 @@ export default function Header(){
   const name = localStorage.getItem('name');
   const token = localStorage.getItem('token');
   
-  if (currentRoute.pathname === '/' || currentRoute.pathname.includes('theory') || currentRoute.pathname.includes('exercise') || currentRoute.pathname.includes('/recover-password') || currentRoute.pathname.includes('/courses')) {
+  if (currentRoute.pathname === '/' || currentRoute.pathname.includes('theory') || currentRoute.pathname.includes('exercise') || currentRoute.pathname.includes('/recover-password') || currentRoute.pathname.includes('topic')) {
     return null;
+  }
+
+  function changePage() {
+    setDropDownisClosed(true);
+    history.push('/perfil');
   }
 
   function signOut() {
@@ -45,20 +52,22 @@ export default function Header(){
         </li>
         <li className="courses">Cursos</li>
       </ul>
-      <div className='user'>
-        {
-          dropDownisClosed ?  
-            <IoIosArrowDown className="icon" onClick={() => setDropDownisClosed(!dropDownisClosed)}/> : 
-            <>
-              <ul className="dropDown">
-                <li> Perfil </li>
-                <li onClick={() => signOut()}> Sair </li>
-              </ul>
-              <IoIosArrowUp className="icon" onClick={() => setDropDownisClosed(!dropDownisClosed)}/>
-            </>
-        }
-        <Avatar name={name} round={true} size="4em" maxInitials={2}/>
-      </div>
+      <UseOutsideClick onClickOutside={() => setDropDownisClosed(true)} onClick={() => setDropDownisClosed(!dropDownisClosed)}>
+        <div className='user'>
+          {
+            dropDownisClosed ? 
+              <IoIosArrowDown className="icon" /> :  
+              <div >
+                <ul className="dropDown" >
+                  <li onClick={() => changePage()}> Perfil </li>
+                  <li onClick={() => signOut()}> Sair </li>
+                </ul>
+                <IoIosArrowUp className="icon" />
+              </div>
+          }
+          <Avatar name={name} round={true} size="4em" maxInitials={2}/>
+        </div>
+      </UseOutsideClick>
     </StyledHeader>
   );
 }
