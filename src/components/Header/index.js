@@ -1,4 +1,5 @@
-import React, { useContext, useState } from 'react';
+// eslint-disable-next-line jsx-a11y/click-events-have-key-events
+import React, { useContext, useState  } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import Avatar from 'react-avatar';
@@ -15,7 +16,7 @@ export default function Header(){
   const name = localStorage.getItem('name');
   const token = localStorage.getItem('token');
   
-  if (currentRoute.pathname === '/' || currentRoute.pathname.includes('theory') || currentRoute.pathname.includes('exercise') || currentRoute.pathname.includes('/recover-password') || currentRoute.pathname.includes('/courses')) {
+  if (currentRoute.pathname === '/' || currentRoute.pathname.includes('theory') || currentRoute.pathname.includes('exercise') || currentRoute.pathname.includes('/recover-password') || currentRoute.pathname.includes('topic')) {
     return null;
   }
 

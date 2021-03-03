@@ -896,9 +896,9 @@
     to-fast-properties "^2.0.0"
 
 "@bootcamp-ra/mocha-as-promised@^1.0.6":
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/@bootcamp-ra/mocha-as-promised/-/mocha-as-promised-1.0.6.tgz#82a62d30931f9b8cc24df3c5a44a8e44d753b6d0"
-  integrity sha512-5Uhy4Sy8EoPUEJH7c1XiNUPB1S5yLlIayyExSfJFxgqox3kz9tIbPlWuQCb1gaoxO2Oyclbt33mQhCsaEPm/eA==
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/@bootcamp-ra/mocha-as-promised/-/mocha-as-promised-1.0.7.tgz#326749882210195f2ea4b6c8a1a4f4c0f2dd79cb"
+  integrity sha512-gQyGglpA4jNv51CvaLjP3EOEDwffFDqyHm7O001P+dGj4bGfCol8cXuue1nG+/gAm/06ovaSlrSVKkJiodD/hQ==
   dependencies:
     "@babel/standalone" "^7.12.18"
     "@freecodecamp/loop-protect" "^2.2.1"
@@ -953,6 +953,18 @@
   resolved "https://registry.yarnpkg.com/@freecodecamp/loop-protect/-/loop-protect-2.2.1.tgz#86ca105c61d561922ede620ae1de162ceb00f455"
   integrity sha512-px2gy/jHfMyTFOAY+c5IiNuBJCP+B0vC20SGdaS0YgnCJov82bewHDqE9a2fci4XYTxjxyJpuTKZMelLxDcyJg==
 
+"@hapi/hoek@^9.0.0":
+  version "9.1.1"
+  resolved "https://registry.yarnpkg.com/@hapi/hoek/-/hoek-9.1.1.tgz#9daf5745156fd84b8e9889a2dc721f0c58e894aa"
+  integrity sha512-CAEbWH7OIur6jEOzaai83jq3FmKmv4PmX1JYfs9IrYcGEVI/lyL1EXJGCj7eFVJ0bg5QR8LMxBlEtA+xKiLpFw==
+
+"@hapi/topo@^5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@hapi/topo/-/topo-5.0.0.tgz#c19af8577fa393a06e9c77b60995af959be721e7"
+  integrity sha512-tFJlT47db0kMqVm3H4nQYgn6Pwg10GTZHb1pwmSiv1K4ks6drQOtfEF5ZnPjkvC+y4/bUPHK+bc87QvLcL+WMw==
+  dependencies:
+    "@hapi/hoek" "^9.0.0"
+
 "@monaco-editor/loader@^1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@monaco-editor/loader/-/loader-1.0.0.tgz#c7ea78ef07cebcae83d92bbfe2bddab563468102"
@@ -968,6 +980,23 @@
     "@monaco-editor/loader" "^1.0.0"
     prop-types "^15.7.2"
     state-local "^1.0.7"
+
+"@sideway/address@^4.1.0":
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/@sideway/address/-/address-4.1.1.tgz#9e321e74310963fdf8eebfbee09c7bd69972de4d"
+  integrity sha512-+I5aaQr3m0OAmMr7RQ3fR9zx55sejEYR2BFJaxL+zT3VM2611X0SHvPWIbAUBZVTn/YzYKbV8gJ2oT/QELknfQ==
+  dependencies:
+    "@hapi/hoek" "^9.0.0"
+
+"@sideway/formula@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@sideway/formula/-/formula-3.0.0.tgz#fe158aee32e6bd5de85044be615bc08478a0a13c"
+  integrity sha512-vHe7wZ4NOXVfkoRb8T5otiENVlT7a3IAiw7H5M2+GO+9CDgcVUUsX1zalAztCmwyOr2RUTGJdgB+ZvSVqmdHmg==
+
+"@sideway/pinpoint@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@sideway/pinpoint/-/pinpoint-2.0.0.tgz#cff8ffadc372ad29fd3f78277aeb29e632cc70df"
+  integrity sha512-RNiOoTPkptFtSVzQevY/yWtZwf/RxyVnPy/OcA9HBM3MlGDnBEYL5B41H0MTn0Uec8Hi+2qUtTfG2WWZBmMejQ==
 
 "@types/eslint-scope@^3.7.0":
   version "3.7.0"
@@ -2259,9 +2288,9 @@ es-abstract@^1.18.0-next.1, es-abstract@^1.18.0-next.2:
     unbox-primitive "^1.0.0"
 
 es-module-lexer@^0.4.0:
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/es-module-lexer/-/es-module-lexer-0.4.0.tgz#21f4181cc8b7eee06855f1c59e6087c7bc4f77b0"
-  integrity sha512-iuEGihqqhKWFgh72Q/Jtch7V2t/ft8w8IPP2aEN8ArYKO+IWyo6hsi96hCdgyeEDQIV3InhYQ9BlwUFPGXrbEQ==
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/es-module-lexer/-/es-module-lexer-0.4.1.tgz#dda8c6a14d8f340a24e34331e0fab0cb50438e0e"
+  integrity sha512-ooYciCUtfw6/d2w56UVeqHPcoCFAiJdz5XOkYpv/Txl1HMUozpXjz/2RIQgqwKdXNDPSF1W7mJCFse3G+HDyAA==
 
 es-to-primitive@^1.2.1:
   version "1.2.1"
@@ -3430,6 +3459,17 @@ jest-worker@^26.6.2:
     merge-stream "^2.0.0"
     supports-color "^7.0.0"
 
+joi@^17.4.0:
+  version "17.4.0"
+  resolved "https://registry.yarnpkg.com/joi/-/joi-17.4.0.tgz#b5c2277c8519e016316e49ababd41a1908d9ef20"
+  integrity sha512-F4WiW2xaV6wc1jxete70Rw4V/VuMd6IN+a5ilZsxG4uYtUXWu2kq9W5P2dz30e7Gmw8RCbY/u/uk+dMPma9tAg==
+  dependencies:
+    "@hapi/hoek" "^9.0.0"
+    "@hapi/topo" "^5.0.0"
+    "@sideway/address" "^4.1.0"
+    "@sideway/formula" "^3.0.0"
+    "@sideway/pinpoint" "^2.0.0"
+
 "js-tokens@^3.0.0 || ^4.0.0", js-tokens@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-4.0.0.tgz#19203fb59991df98e3a287050d4647cdeaf32499"
@@ -4379,6 +4419,11 @@ react-avatar@^3.9.7:
     core-js "^3.6.1"
     is-retina "^1.0.3"
     md5 "^2.0.0"
+
+react-detect-click-outside@^1.0.7:
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/react-detect-click-outside/-/react-detect-click-outside-1.0.7.tgz#9b2307270ed88b8d77bc0ca6fa76b24b98c91030"
+  integrity sha512-JkglN5Pw/VAswLj1hGogZLsnVdzoJcc8ZXgNz01ocfaiqdCem2OacZj6roFXUXRAdypODrUx6Gl0NBsgQPHE1g==
 
 react-dom@^17.0.1:
   version "17.0.1"

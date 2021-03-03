@@ -62,8 +62,8 @@ export default function Activity() {
       {
         progress &&
         <ActivityProgress 
-        progress={progress}
-        activity={activity} 
+          progress={progress}
+          activity={activity} 
         />
       }
       
