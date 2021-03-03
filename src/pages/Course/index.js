@@ -87,19 +87,19 @@ export default function Course() {
           <p>{course.description}</p>
         </Presentation>
         <CourseStatus>
-          <Progress>
+          <Progress progress={course.progress}>
             <Avatar name={name} round={true} size="4em" maxInitials={2} />
             <div className="progress">
               <p>Você não iniciou esse curso ainda</p>
               <div className="progress-bar">
                 <div className="progress-value">
-                  <p>0%</p>
+                  <p>{course.progress ? `${course.progress}` : '0'}%</p>
                 </div>
               </div>
             </div>
           </Progress>
           <CourseButton disabled={loading} onClick={verifyUserProgress}>
-            <p>Iniciar curso {'>>'}</p>
+            <p>{course.started ? 'Continuar curso >>' : 'Iniciar curso >>'}</p>
           </CourseButton>
         </CourseStatus>
         <Accordeon>
@@ -107,7 +107,13 @@ export default function Course() {
           <ChaptersContainer>
             {
               course.chapters && 
-              course.chapters.map((c) => <Chapter text={c.name} content={`${c.theoryCount} aulas  •  ${c.exerciseCount} exercícios`} topics={c.topics} key={c.id} />)
+              course.chapters.map((c) => <Chapter 
+              text={c.name} 
+              content={`${c.theoryCount} aulas  •  ${c.exerciseCount} exercícios`} 
+              topics={c.topics} 
+              courseId={course.id}
+              chapterId={c.id}
+              key={c.id} />)
             }
           </ChaptersContainer>
         </Accordeon>

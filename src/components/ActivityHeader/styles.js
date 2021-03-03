@@ -96,6 +96,9 @@ const StyledActivityHeader = styled.nav`
             font-size: 0.8em;
             margin: 0 0.8em 0 0;
         }
+        .done {
+            color: #76DF93;
+        }
         cursor: pointer;
     }
 `;

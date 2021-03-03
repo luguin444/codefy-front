@@ -13,12 +13,20 @@ export default function ActivityForm() {
   const token = localStorage.getItem('token');
 
   function handleActivity() {
-    if (done) {
+    if (done && !activity.done) {
       axios.post(`${process.env.API_BASE_URL}/clients/activities/${activityType}/${activityId}`, {}, { headers: { 'X-Access-Token': token } })
       .then(() => {
         const newActivities = activities;
         const index = newActivities.findIndex(n => n.type === activityType && n.id === parseInt(activityId));
         newActivities[index].done = true;
+        setActivities(newActivities);
+      }).catch(() => alert('erro'));
+    } else if (!done && activity.done) {
+      axios.post(`${process.env.API_BASE_URL}/clients/activities/${activityType}/${activityId}`, {}, { headers: { 'X-Access-Token': token } })
+      .then(() => {
+        const newActivities = activities;
+        const index = newActivities.findIndex(n => n.type === activityType && n.id === parseInt(activityId));
+        newActivities[index].done = false;
         setActivities(newActivities);
       }).catch(() => alert('erro'));
     }
