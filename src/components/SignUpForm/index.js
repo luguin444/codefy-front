@@ -29,7 +29,6 @@ export default function SignUpForm (props) {
             setPassword('');
             setName('');
             setConfirmPassword('');
-            console.log(data);
         }).catch((err) => {
             if (err.response.data.error === 'Senhas diferentes.') {
                 alert('As senhas não são iguais. Tente novamente');

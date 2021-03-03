@@ -5,11 +5,12 @@ import { HiOutlineLightBulb } from 'react-icons/hi';
 import CourseContext from '../../contexts/CourseContext';
 
 export default function FunctionBox({ currentExercise }) {
-  const { baseCode } = currentExercise;
+  const { baseCode, id } = currentExercise;
   const { isSolution, setIsSolution } = useContext(CourseContext);
 
-  console.log(isSolution);
-  console.log(baseCode);
+  function stashGivenCode(value) {
+    localStorage.setItem(`code${id}`, value);
+  }
 
   return (
     <StyledFunctionBox>
@@ -26,7 +27,8 @@ export default function FunctionBox({ currentExercise }) {
           theme="vs-dark"
           loading="Loading..."
           defaultLanguage="javascript"
-          value={ baseCode }
+          value={ localStorage.getItem(`code${id}`) || baseCode }
+          onChange={value => stashGivenCode(value)}
         />
       </div>
     </StyledFunctionBox>

@@ -18,15 +18,49 @@ export default function Exercises() {
   ;
 
   const baseCode = `
-function minhaFuncao() {
+function sumArray(array) {
   //Insira seu código aqui
 }
   `;
 
   const solutionCode = `
-function nossaFuncao() {
-  //Aqui estará o código com a solução
+function sumArray(array) {
+  let sum = 0;
+
+  for (let i = 0; i < array.length; i++) {
+    sum += array[i];
+  }
+
+  return sum;
 }
+  `;
+
+  const testCode = `
+describe('sumArray', () => {
+  it('should return the sum of all numbers from the passed array', () => {
+    const array = [2,4,6,8,10];
+
+    const result = sumArray(array);
+
+    expect(result).to.equal(30);
+  });
+
+  it('should return 0 when passed an empty array', () => {
+    const array = [];
+
+    const result = sumArray(array);
+
+    expect(result).to.equal(0);
+  });
+
+  it('should return a negative number when the sum is negative', () => {
+    const array = [3, -12, 5, 6, -8];
+
+    const result = sumArray(array);
+
+    expect(result).to.equal(-6);
+  });
+})
   `;
 
   const testExercise = {
@@ -34,55 +68,55 @@ function nossaFuncao() {
     statement,
     baseCode,
     solutionCode,
-    testCode: 'Em breve código de teste'
+    testCode
   };
 
   return (
     currentExercise.statement !== undefined 
-      ? (
-        <StyledExerciseContainer>
-          <StyledQuestion>
-            <h1>Exercício {currentExercise.id}</h1>
-            <div>
-              {currentExercise.statement}
-            </div>
-            <ActivityForm />
-          </StyledQuestion>
-          <StyledExercise>
-            { isSolution
-              ? <FunctionSolutionBox currentExercise={currentExercise}/>
-              : (
-                <>
-                  <FunctionBox currentExercise={currentExercise}/>
-                  <ConsoleBox currentExercise={currentExercise}/>
-                </>                
-              )
-            }
-          </StyledExercise>
-        </StyledExerciseContainer>
-      )
-      : (
-        <StyledExerciseContainer>
-          <StyledQuestion>
-            <h1>Exercício {testExercise.id}</h1>
-            <div>
-              {testExercise.statement}
-            </div>
-            <ActivityForm />
-          </StyledQuestion>
-          <StyledExercise>
-            { isSolution
-              ? <FunctionSolutionBox currentExercise={testExercise}/>
-              : (
-                <>
-                  <FunctionBox currentExercise={testExercise}/>
-                  <ConsoleBox currentExercise={testExercise}/>
-                </>                
-              )
-            }
-          </StyledExercise>
-        </StyledExerciseContainer>
-      )
+    ? (
+      <StyledExerciseContainer>
+        <StyledQuestion>
+          <h1>Exercício {currentExercise.id}</h1>
+          <div>
+            {currentExercise.statement}
+          </div>
+          <ActivityForm />
+        </StyledQuestion>
+        <StyledExercise>
+          { isSolution
+            ? <FunctionSolutionBox currentExercise={currentExercise}/>
+            : (
+              <>
+                <FunctionBox currentExercise={currentExercise}/>
+                <ConsoleBox currentExercise={currentExercise}/>
+              </>                
+            )
+          }
+        </StyledExercise>
+      </StyledExerciseContainer>
+    )
+    : (
+      <StyledExerciseContainer>
+        <StyledQuestion>
+          <h1>Exercício {testExercise.id}</h1>
+          <div>
+            {testExercise.statement}
+          </div>
+          <ActivityForm />
+        </StyledQuestion>
+        <StyledExercise>
+          { isSolution
+            ? <FunctionSolutionBox currentExercise={testExercise}/>
+            : (
+              <>
+                <FunctionBox currentExercise={testExercise}/>
+                <ConsoleBox currentExercise={testExercise}/>
+              </>                
+            )
+          }
+        </StyledExercise>
+      </StyledExerciseContainer>
+    )
     
   );
 }

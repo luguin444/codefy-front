@@ -8,9 +8,6 @@ export default function FunctionSolutionBox({ currentExercise }) {
   const { solutionCode } = currentExercise;
   const { isSolution, setIsSolution } = useContext(CourseContext);
 
-  console.log(isSolution);
-  console.log(solutionCode);
-
   return (
     <StyledSolutionBox>
       <header>
