@@ -2,7 +2,8 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import Avatar from 'react-avatar';
 import { useHistory } from 'react-router-dom';
-import { BackgroundBanner, ContentBox, PageContainer, ContainerData, ContainerButton } from './styles';
+import { BackgroundBanner, ContentBox, PageContainer, ContainerData, ContainerButton, Error } from './styles';
+import { editUserDataSchema, editUserPasswordSchema} from './editUserDataSchema';
 
 export default function ProfilePage(){
   const nameStorage = localStorage.getItem('name');
@@ -16,19 +17,29 @@ export default function ProfilePage(){
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [loading, setLoading] = useState(false);
+  const [isInvalidData, setIsInvalidData] = useState(false);
 
   function sendDataToServer() {
     setLoading(true);
     const body = changingPassword ? { name, email, password, confirmPassword } : { name, email };
-    axios.post(`${process.env.API_BASE_URL}/clients/change-profile`, body, { headers: { 'X-Access-Token': token } })
-    .then(() => {
+    const isValidBody = changingPassword ? editUserPasswordSchema.validate(body).error : editUserDataSchema.validate(body).error;
+
+    if (!isValidBody) {
+      axios.post(`${process.env.API_BASE_URL}/clients/change-profile`, body, { headers: { 'x-access-Token': token } })
+    .then(({ data }) => {
       setLoading(false);
+      localStorage.setItem('name', data.name);
+      localStorage.setItem('email', data.email);
       history.push('/home');
     })
     .catch(err => {
       console.error(err);
       setLoading(false);
     });
+    } else {
+      setLoading(false);
+      setIsInvalidData(isValidBody);
+    }
   }
 
   return (
@@ -40,26 +51,54 @@ export default function ProfilePage(){
       <ContentBox>
         <ContainerData>
           <div className='inputBox'>
-            <p>Nome completo</p>
+            <p>nome completo</p>
             <input 
               type='text'
               value={name}
               onChange={(e)=> setName(e.target.value)}
             />
-            <p>Email</p>
+            <p>e-mail</p>
             <input 
               type='email'
               value={email}
               onChange={(e)=> setEmail(e.target.value)}
             />
+            {
+              changingPassword &&
+              <>
+                <p>Senha</p>
+                <input 
+                  className='small'
+                  type='password'
+                  value={password}
+                  onChange={(e)=> setPassword(e.target.value)}
+                />
+                <p>repita a senha</p>
+                <input
+                  className='small'
+                  type='password'
+                  value={confirmPassword}
+                  onChange={(e)=> setConfirmPassword(e.target.value)}
+                />
+              </>
+            }
           </div>
           <div className='image'>
             <Avatar name={nameStorage} round={true} size="9em" maxInitials={2} />
           </div>   
         </ContainerData>
+        {
+          isInvalidData && 
+          <Error className='error'>{ JSON.stringify(isInvalidData.message) }</Error>
+        }
         <ContainerButton>
-          <button className='password' disabled={loading}> Trocar senha</button>
-          <button className='save' onClick={sendDataToServer} disabled={loading}>Salvar</button>            
+          {
+            !changingPassword &&
+            <button className='password' disabled={loading} onClick={() => setChangingPassword(!changingPassword)}> Trocar senha</button>
+          }
+          <button className='save' onClick={sendDataToServer} disabled={loading}>
+            {loading ? <img src='/assets/images/loading5.gif' alt="" /> :  'Salvar' }
+          </button>            
         </ContainerButton>
       </ContentBox>
     </PageContainer>

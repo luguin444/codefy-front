@@ -65,6 +65,10 @@ const ContainerData = styled.div`
     color: #9F9F9F;
     font-family: Roboto;
   }
+  
+  .small {
+    width: 300px;
+  }
 
   p {
     color: #9F9F9F;
@@ -85,6 +89,10 @@ const ContainerButton = styled.div`
     font-size: 1.2rem;
     margin-top: 2rem;
     height: 35px;
+
+    img {
+      width: 2rem;
+    }
   }
 
   .password {
@@ -93,6 +101,7 @@ const ContainerButton = styled.div`
     border: 2px solid #46A7D4;
     border-radius: 10px;
     width: 10.2rem;
+    margin-right: 1.8rem;
   }
 
   .save {
@@ -100,8 +109,12 @@ const ContainerButton = styled.div`
     width: 8rem;
     border-radius: 10px;
     color: #FFFFFF;
-    margin-left: 1.5rem;
   }
+`;
+
+const Error = styled.p`
+  color: red;
+  font-weight: bold;
 `;
 
 export {
@@ -110,6 +123,7 @@ export {
     PageContainer,
     ContainerData,
     Form,
-    ContainerButton
+    ContainerButton,
+    Error,
 };
 
