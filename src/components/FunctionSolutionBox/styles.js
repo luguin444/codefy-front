@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
-const StyledFunctionBox = styled.div`
+const StyledSolutionBox = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
     color: #FFFFFF;
-    height: 55%;
+    height: 100%;
     overflow-y: hidden;
 
     header {
@@ -48,4 +48,4 @@ const StyledFunctionBox = styled.div`
         width: 100%;
     }
 `;
-export default StyledFunctionBox;
+export default StyledSolutionBox;
