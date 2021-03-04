@@ -46,6 +46,7 @@ const StyledFunctionBox = styled.div`
         background: #202020;
         flex-grow: 1;
         width: 100%;
+        z-index: 0;
     }
 `;
 export default StyledFunctionBox;

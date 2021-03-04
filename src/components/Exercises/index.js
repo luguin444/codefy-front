@@ -64,7 +64,7 @@ describe('sumArray', () => {
   `;
 
   const testExercise = {
-    id: 'Teste',
+    position: 'Teste',
     statement,
     baseCode,
     solutionCode,
@@ -76,7 +76,7 @@ describe('sumArray', () => {
     ? (
       <StyledExerciseContainer>
         <StyledQuestion>
-          <h1>Exercício {currentExercise.id}</h1>
+          <h1>Exercício {currentExercise.position}</h1>
           <div>
             {currentExercise.statement}
           </div>
@@ -98,7 +98,7 @@ describe('sumArray', () => {
     : (
       <StyledExerciseContainer>
         <StyledQuestion>
-          <h1>Exercício {testExercise.id}</h1>
+          <h1>Exercício {testExercise.position}</h1>
           <div>
             {testExercise.statement}
           </div>

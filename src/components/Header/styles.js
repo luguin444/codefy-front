@@ -18,9 +18,9 @@ const styledHeader = styled.nav`
         align-items: center;
 
         li {
-        font-size: 1.2em;
-        margin: 0 1em 0 0;
-        cursor: pointer;
+            font-size: 1.2em;
+            margin: 0 1em 0 0;
+            cursor: pointer;
         }
 
         .logo {
@@ -35,10 +35,12 @@ const styledHeader = styled.nav`
         display: flex;
         align-items: center;
         cursor: pointer;
+
         .icon {
             margin-right: 0.5rem;
             font-size: 1.7rem;
         }
+
         .dropDown {
             position: fixed;
             top: 96px;
@@ -52,14 +54,28 @@ const styledHeader = styled.nav`
             justify-content: space-around;
             align-items: center;
 
+            .signOut {
+                height: 100%;
+                width: 100%;
+                background: none;
+                border: none;
+                outline: 0;
+                color: #262626;
+                font-family: 'Roboto';
+                font-size: 1.2rem;
+                cursor: pointer;
+            }
+
             li {
                 color: #262626;
-                font-family: Roboto;
+                font-family: 'Roboto';
                 font-size: 1.2rem;
                 padding: 0 0 0.4rem 0;
                 width: 80%;
                 text-align: center;
+                cursor: pointer;
             }
+
             li:first-child {
                 border-bottom: 1px solid #D7D7D7;
             }
@@ -72,7 +88,8 @@ const styledHeader = styled.nav`
         .logo {
             margin: 0;
         }
-        .home, .courses, .perfil, .user{
+
+        .home, .courses, .perfil, .user {
             display: none;
         }
     }

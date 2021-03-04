@@ -14,7 +14,7 @@ export default function Activity() {
   const token = localStorage.getItem('token');
 
   useEffect(() => {
-    if (!courseContext || courseContext.id !== parseInt(courseId)) {
+    if (!courseContext || courseContext.id !== parseInt(courseId) || activities === null) {
       axios.get(`${process.env.API_BASE_URL}/clients/courses/${courseId}/activities`, { headers: { 'X-Access-Token': token } })
       .then(resp => {
         setCourseContext(resp.data);

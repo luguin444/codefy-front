@@ -8,8 +8,9 @@ const StyledActivityHeader = styled.nav`
     background: #292929;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
     padding: 1em;
+    z-index: 500;
 
-    .back{
+    .back {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -22,14 +23,15 @@ const StyledActivityHeader = styled.nav`
         border-radius: 6px;
         cursor: pointer;
         z-index: 1;
-        svg{
+        
+        svg {
             font-size: 1.2em;
             font-weight: bold;
             color: #fff;
         }
     }
 
-    .chapter-topic{
+    .chapter-topic {
         position: relative;
         display: flex;
         color: #D6D6D6;
@@ -39,14 +41,14 @@ const StyledActivityHeader = styled.nav`
         font-size: 1.3em;
         line-height: 29px;
 
-        svg{
+        svg {
             margin: 0 0 0 0.4em;
             cursor: pointer;
             font-size: 1.325em;
         }
     }
 
-    .navigation{
+    .navigation {
         width: 378px;
         height: 400px;
         overflow-y: scroll;
@@ -58,7 +60,6 @@ const StyledActivityHeader = styled.nav`
         padding: 20px;
         border-bottom-right-radius: 1em;
         border-bottom-left-radius: 1em;
-        z-index: 500;
 
         ::-webkit-scrollbar-track {
             background-color: transparent;
@@ -93,14 +94,15 @@ const StyledActivityHeader = styled.nav`
         align-items: center;
         margin: 0.5em 0;
         padding: 0 0 0 0.5em;
+        cursor: pointer;
+
         svg{
             font-size: 0.8em;
             margin: 0 0.8em 0 0;
         }
         .done {
             color: #76DF93;
-        }
-        cursor: pointer;
+        } 
     }
 `;
 
