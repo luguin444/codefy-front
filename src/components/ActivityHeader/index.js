@@ -3,22 +3,24 @@
 import React, { useState } from 'react';
 import { IoIosArrowBack, IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 import { FaCircle } from 'react-icons/fa';
+import { AiFillCheckCircle } from 'react-icons/ai';
 import { useHistory, useParams } from 'react-router-dom';
 import StyledActivityHeader from './styles';
 import UseOutsideClick from '../../hooks/useOutsideClick';
 
-export default function ActivityHeader({ chapter, topic, chapters }){
+export default function ActivityHeader({ chapter, topic, activities, chapters }){
   const history = useHistory();
   const { courseId } = useParams();
   const [open, setOpen] = useState(false);
 
   function handleClick(chapterId, topicId, activityType, activityId){
+    setOpen(false);
     history.push(`/course/${courseId}/chapter/${chapterId}/topic/${topicId}/${activityType}/${activityId}`);
   }
 
-  function changeActivitie(chapterId, topicId, theoryId) {
-    setOpen(false);
-    handleClick(chapterId, topicId, 'theory', theoryId);
+  function checkDoneTopic(topicId, numberOfActivities){
+    const doneActivitiesTopic = activities.filter(a => a.topicId === topicId && a.done);
+    return doneActivitiesTopic.length === numberOfActivities;
   }
 
   return (
@@ -37,27 +39,28 @@ export default function ActivityHeader({ chapter, topic, chapters }){
             <ul className="navigation">
               {
                 chapters.map(c => {
-                  return (
-                    <li key={c.id}>
-                      <p className="chapter">{c.name}</p>
-                      {
-                        c.topics.map(t => {
-                          return (
-                            <div className="topic-container" 
-                              key={t.id} 
-                              onClick={() => changeActivitie(c.id, t.id, t.theory.id)}
-                              onKeyPress={() => changeActivitie(c.id, t.id, t.theory.id)}
-                            >
-                              <FaCircle />
-                              <p className="topic" >{t.name}</p>
-                            </div>
-                          );
-                        })
-                      }
-                    </li>           
-                  );
-                })
-              }
+                return (
+                  <li key={c.id}>
+                    <p className="chapter">{c.name}</p>
+                    {
+                      c.topics.map(t => {
+                      const doneTopic = checkDoneTopic(t.id, t.exercises.length + 1);
+                      return (
+                        <div className="topic-container" 
+                        key={t.id} 
+                        onClick={() => handleClick(c.id, t.id, 'theory', t.theory.id)}
+                        onKeyPress={() => handleClick(c.id, t.id, 'theory', t.theory.id)}
+                        >
+                          {doneTopic ? <AiFillCheckCircle className="done" /> : <FaCircle />}
+                          <p className="topic" >{t.name}</p>
+                        </div>
+                      );
+                    })
+                  }
+                  </li>
+                );
+              })
+            }
             </ul>
           </UseOutsideClick>
         }

@@ -146,6 +146,7 @@ const Progress = styled.div`
     }
 
     .progress-value {
+        ${props => props.progress ? `width: ${props.progress}%;` : ''}
         min-width: fit-content;
         border-radius: 0.7rem;
         padding: 0.15rem 0.5rem;

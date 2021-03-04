@@ -62,4 +62,8 @@ a{
 
 button{
 	margin: 0;
+	outline: none;
+	border: none;
+	background: transparent;
+	cursor: pointer;
 }

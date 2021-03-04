@@ -52,9 +52,10 @@ export default function Activity() {
       {
         activity &&
         <ActivityHeader 
-          chapter={activity.chapterName} 
-          topic={activity.topicName}
-          chapters={courseContext.chapters} 
+        chapter={activity.chapterName} 
+        topic={activity.topicName}
+        activities={activities}
+        chapters={courseContext.chapters} 
         />
       }
       
