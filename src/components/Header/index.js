@@ -10,7 +10,7 @@ import CourseContext from '../../contexts/CourseContext';
 
 export default function Header(){
   const history = useHistory();
-  const { setDone, setActivities, setCourseContext, setActivity } = useContext(CourseContext);
+  const { setDone, setActivities, setCourseContext, setActivity, localCode } = useContext(CourseContext);
   const [dropDownisClosed, setDropDownisClosed] = useState(true);
   const currentRoute = useLocation();
   const name = localStorage.getItem('name');
@@ -25,6 +25,9 @@ export default function Header(){
     .then(() => {
         localStorage.removeItem('token');
         localStorage.removeItem('name');
+        for (let i = 0; i < localCode.length; i++) {
+          localStorage.removeItem(localCode[i]);
+        }
         setDone(false);
         setActivities(null);
         setCourseContext(null);

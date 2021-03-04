@@ -23,6 +23,9 @@ export default function FunctionSolutionBox({ currentExercise }) {
           theme="vs-dark"
           loading="Loading..."
           defaultLanguage="javascript"
+          options={{
+            readOnly: true,
+          }}
           value={ solutionCode }
         />
       </div>

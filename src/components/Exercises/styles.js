@@ -16,7 +16,6 @@ const StyledQuestion = styled.article`
     width: 45%;
     color: #FFF;
 
-
     h1 {
         font-weight: bold;
         font-size: 1.8rem;
@@ -26,6 +25,23 @@ const StyledQuestion = styled.article`
         flex-grow: 1;
         overflow-y: scroll;
         margin-top: 1.8rem;
+
+        ::-webkit-scrollbar-track {
+            background-color: transparent;
+            margin: 0.5em;
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+            background: transparent;
+            padding: 0.5em;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #5B5B5B;
+            margin: 0 5px 0 0;
+            border-radius: 1em;
+        }
 
         & > p {
             font-size: 0.8rem;

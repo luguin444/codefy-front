@@ -6,10 +6,11 @@ import CourseContext from '../../contexts/CourseContext';
 
 export default function FunctionBox({ currentExercise }) {
   const { baseCode, id } = currentExercise;
-  const { isSolution, setIsSolution } = useContext(CourseContext);
+  const { isSolution, setIsSolution, localCode, setLocalCode } = useContext(CourseContext);
 
   function stashGivenCode(value) {
     localStorage.setItem(`code${id}`, value);
+    setLocalCode([`code${id}`, ...localCode]);
   }
 
   return (

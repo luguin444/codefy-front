@@ -40,10 +40,9 @@ export default function Course() {
     setLoading(true);
 
     if (course.started) {
-      axios.get(`${process.env.API_BASE_URL}/clients/courses/${courseId}/activities`)
+      axios.get(`${process.env.API_BASE_URL}/clients/courses/${courseId}/activities`, { headers: { 'X-Access-Token': token } })
       .then((resp) => {
         setCourseContext(resp.data);
-        startOrResumeCourse();
       }).catch(err => {
         console.log(err);
         setLoading(false);
@@ -59,21 +58,27 @@ export default function Course() {
     }
   }
 
-  function startOrResumeCourse() {
-    let nextIndex;
+  useEffect(() => {
+    let calling = true;
 
-    for (let i = activities.length - 1; i >= 0; i--) {
-      if (activities[i].done === true) {
-        nextIndex = i + 1;
+    if (activities && calling) {
+      let nextIndex = 0;
+
+      for (let i = activities.length - 1; i >= 0; i--) {
+        if (activities[i].done) {
+          nextIndex = i + 1;
+        }
       }
+
+      if (nextIndex < activities.length) {
+        history.push(`/course/${courseId}/chapter/${activities[nextIndex].chapterId}/topic/${activities[nextIndex].topicId}/${activities[nextIndex].type}/${activities[nextIndex].id}`);
+      } else {
+        history.push(`/course/${courseId}/chapter/${activities[activities.length - 1].chapterId}/topic/${activities[activities.length - 1].topicId}/${activities[activities.length - 1].type}/${activities[activities.length - 1].id}`);
+      }  
     }
 
-    if (nextIndex < activities.length) {
-      history.push(`/course/${courseId}/chapter/${activities[nextIndex].chapterId}/topic/${activities[nextIndex].topicId}/${activities[nextIndex].type}/${activities[nextIndex].id}`);
-    } else {
-      history.push(`/course/${courseId}/chapter/${activities[activities.length - 1].chapterId}/topic/${activities[activities.length - 1].topicId}/${activities[activities.length - 1].type}/${activities[activities.length - 1].id}`);
-    } 
-  }
+    return () => (calling = false);
+  },[activities]);
   
   return (
     <OutterContainer>

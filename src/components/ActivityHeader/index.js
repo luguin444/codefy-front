@@ -1,14 +1,16 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { IoIosArrowBack, IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 import { FaCircle } from 'react-icons/fa';
 import { AiFillCheckCircle } from 'react-icons/ai';
 import { useHistory, useParams } from 'react-router-dom';
 import StyledActivityHeader from './styles';
+import CourseContext from '../../contexts/CourseContext';
 
 export default function ActivityHeader({ chapter, topic, activities, chapters }){
   const history = useHistory();
+  const { setActivities } = useContext(CourseContext);
   const { courseId } = useParams();
   const [open, setOpen] = useState(false);
 
@@ -23,7 +25,7 @@ export default function ActivityHeader({ chapter, topic, activities, chapters })
 
   return (
     <StyledActivityHeader>
-      <div className="back" onClick={() => history.push(`/course/${courseId}`)} onKeyPress={() => history.push(`/course/${courseId}`)}>
+      <div className="back" onClick={() => {history.push(`/course/${courseId}`); setActivities(null);}} onKeyPress={() => {history.push(`/course/${courseId}`); setActivities(null);}}>
         <IoIosArrowBack />
       </div>
       <div className='chapter-topic'>

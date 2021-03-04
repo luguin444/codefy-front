@@ -9,6 +9,7 @@ export function CourseProvider({ children }) {
   const [activity, setActivity] = useState(null);
   const [done, setDone] = useState(false);
   const [isSolution, setIsSolution] = useState(false);
+  const [localCode, setLocalCode] = useState([]);
 
   useEffect(() => {
     if (courseContext) {
@@ -41,11 +42,7 @@ export function CourseProvider({ children }) {
             activities.push({
               type: 'exercise',
               id: currentExercise.id,
-              statement: currentExercise.statement,
-              baseCode: currentExercise.baseCode,
-              testCode: currentExercise.testCode,
-              solutionCode: currentExercise.solutionCode,
-              position: currentExercise.position,
+              title: currentExercise.title,
               done: currentExercise.exerciseUsers.length > 0,
               chapterId: currentChapter.id,
               chapterName: currentChapter.name,
@@ -71,6 +68,8 @@ export function CourseProvider({ children }) {
         setActivity,
         isSolution,
         setIsSolution,
+        localCode, 
+        setLocalCode
       }
     }>
       {children}
