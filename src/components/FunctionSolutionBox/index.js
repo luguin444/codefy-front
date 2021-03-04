@@ -24,11 +24,7 @@ export default function FunctionSolutionBox({ currentExercise }) {
           loading="Loading..."
           defaultLanguage="javascript"
           options={{
-<<<<<<< HEAD
-            readOnly: true,
-=======
             readOnly: true
->>>>>>> main
           }}
           value={ solutionCode }
         />
