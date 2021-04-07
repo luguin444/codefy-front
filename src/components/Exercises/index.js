@@ -11,6 +11,7 @@ export default function Exercises() {
   const { activities, isSolution } = useContext(CourseContext);
   const { activityId } = useParams();
   const currentExercise = activities.find(a => a.id === parseInt(activityId));
+  console.log(currentExercise);
   const statement =
     <p>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut optio architecto ab autem cum quisquam nisi nemo et minus incidunt, esse, magni quia cupiditate numquam eum voluptas eligendi laudantium inventore. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magnam tenetur eos vitae qui esse possimus molestias voluptatum praesentium aliquid voluptates perferendis ea placeat error, quae earum repudiandae velit aliquam! Doloribus. <br /> <br /> <br /> Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum maxime, reprehenderit dolores sunt consequuntur quasi eum vitae soluta explicabo, quo maiores ullam tempora a iure nam. Laborum magni minus odit. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsam voluptatem iure, cumque architecto saepe consequatur quos. Quam expedita vitae nulla, eius accusantium, porro, quia neque ratione atque aperiam nostrum at. <br /> <br /> <b>Exemplo:</b> <br /> <br /> Quando enviado ... retorna ...
