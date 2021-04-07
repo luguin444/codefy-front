@@ -1,5 +1,5 @@
-<p style="text-align: center">
-  <img src="public/assets/images/coding.gif" width="175" alt="Codify" />
+<p align:"center">
+  <img src="public/assets/images/coding.gif" width="310" alt="Codify" />
 </p>
 
 # Codify-front
@@ -15,9 +15,9 @@
 
 <p style="text-align: center">
     <a href="#features">Features</a> •
-    <a href="#tech_stack">Tech Stack</a> •
+    <a href="#stack">Stack</a> •
     <a href="#deploy">Deploy</a> •
-    <a href="#author">Author</a>
+    <a href="#authors">Authors</a>
 </p>
 
 <br><br>
@@ -48,14 +48,13 @@
 
 <br><br>
 
-### Tech Stack
+### Stack
 Languages:<br>
 <p style="text-align: center">
-<img src="https://img.shields.io/badge/html5%20-%23E34F26.svg?&style=for-the-badge&logo=html5&logoColor=white"/>
-<img src="https://img.shields.io/badge/css3%20-%231572B6.svg?&style=for-the-badge&logo=css3&logoColor=white"/>
-<img src="https://img.shields.io/badge/javascript%20-%23323330.svg?&style=for-the-badge&logo=javascript&logoColor=%23F7DF1E"/>
-<img src="https://img.shields.io/badge/jsx%20-%23323330.svg?&style=for-the-badge&logo=react&logoColor=%23F7DF1E"/>
-<img src="https://img.shields.io/static/v1?style=for-the-badge&logo=redis&logoColor=#DC382D"/>
+  <img src="https://img.shields.io/badge/html5%20-%23E34F26.svg?&style=for-the-badge&logo=html5&logoColor=white"/>
+  <img src="https://img.shields.io/badge/css3%20-%231572B6.svg?&style=for-the-badge&logo=css3&logoColor=white"/>
+  <img src="https://img.shields.io/badge/javascript%20-%23323330.svg?&style=for-the-badge&logo=javascript&logoColor=%23F7DF1E"/>
+  <img src="https://img.shields.io/badge/jsx%20-%23323330.svg?&style=for-the-badge&logo=react&logoColor=%23F7DF1E"/>
 </p>
 
 The following tools were used in the construction of the project:
@@ -86,29 +85,42 @@ Version Control:<br>
 
 ### Deploy
 
-The application layout is available on Vercel:
-<a style='margin-left: 10px;' href='http://front-end-my-wallet-git-main.thaliadettenborn.vercel.app/' target='_blank'>
-  <img src='https://img.shields.io/badge/vercel%20-%23000000.svg?&style=for-the-badge&logo=vercel&logoColor=white'>
-</a>
+The application layout is available on Heroku: https://codify-frontend.herokuapp.com/
 
 <br><br>
 ## Contributors
-<table>
+<table style="display: flex; justify-content: space-between;">
   <tr>
-    <td style="text-align: center"><a href="https://github.com/responde-ai"><img style="border-radius: 50%;" src="https://avatars3.githubusercontent.com/u/40724166?s=200&v=4" width="100px;" alt=""/><br /><sub><b>Responde Aí</b></sub></a><br />
+    <td style="text-align: center; margin-right: 20px;"><a href="https://github.com/fabiolmorato"><img src="https://avatars.githubusercontent.com/u/28456685?v=4" width="100px;" alt="Fábio Morato"/><br /><sub><b>Fábio Morato</b></sub></a><br />
+  </tr>
+  <tr>
+    <td style="text-align: center; margin-right: 20px;"><a href="https://github.com/responde-ai"><img src="https://avatars3.githubusercontent.com/u/40724166?s=200&v=4" width="100px;" alt="Responde Aí"/><br /><sub><b>Responde Aí</b></sub></a><br />
   </tr>
 </table>
 
 <br><br>
 
-### Author
+### Authors
 ---
 
 <p style="text-align: center">
-  <img src="https://avatars0.githubusercontent.com/u/70967247?s=460&u=0684339f0717ae41ce18689351f0215fdf270590&v=4" width="100px;" style="border-radius: 50%;"/>
-  <br><br>
-  Made by Klauss 👋 Get in Touch!<br>
-  <a href="https://www.linkedin.com/in/oliverdettenborn/"><img src="https://img.shields.io/badge/linkedin-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a>
-  <a href="mailto:oliver.dettenborn@gmail.com"><img src="https://img.shields.io/badge/gmail-D14836?&style=for-the-badge&logo=gmail&logoColor=white"/></a>
-  <a href="https://github.com/oliverdettenborn"><img src="https://img.shields.io/badge/github-%23100000.svg?&style=for-the-badge&logo=github&logoColor=white" /></a>
+  <img src="https://avatars.githubusercontent.com/u/70959664?v=4" width="100px"/>
+  Made by Bruna Topan<br><br> 
+  👋 Get in Touch!<br>
+  <a href="https://www.linkedin.com/in/bruna-topan-69a183139/"><img src="https://img.shields.io/badge/linkedin-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a>
+  <a href="https://github.com/brunatb"><img src="https://img.shields.io/badge/github-%23100000.svg?&style=for-the-badge&logo=github&logoColor=white" /></a>
+</p>
+<p style="text-align: center">
+  <img src="https://avatars.githubusercontent.com/u/51971072?v=4" width="100px"/>
+  Luis Ganimi<br><br>
+  👋 Get in Touch!<br>
+  <a href="https://www.linkedin.com/in/luisgustavo-ganimi/"><img src="https://img.shields.io/badge/linkedin-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a>
+  <a href="https://github.com/luguin444"><img src="https://img.shields.io/badge/github-%23100000.svg?&style=for-the-badge&logo=github&logoColor=white" /></a>
+</p>
+<p style="text-align: center">
+  <img src="https://avatars.githubusercontent.com/u/70972865?v=4" width="100px"/>
+  & Klauss Correa<br><br>
+  👋 Get in Touch!<br>
+  <a href="https://www.linkedin.com/in/klausscorrea/"><img src="https://img.shields.io/badge/linkedin-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a>
+  <a href="https://github.com/KlaussVP"><img src="https://img.shields.io/badge/github-%23100000.svg?&style=for-the-badge&logo=github&logoColor=white" /></a>
 </p>
